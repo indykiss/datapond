@@ -1,0 +1,2 @@
+class DataPackage < ApplicationRecord
+end
