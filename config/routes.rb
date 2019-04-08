@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  get 'data_provider/index'
+  get 'data_provider/show'
+  get 'data_provider/new'
+  get 'data_provider/create'
+  get 'data_provider/edit'
+  get 'data_provider/update'
+  get 'data_provider/destroy'
   get 'document/index'
   get 'document/show'
   get 'document/new'
