@@ -1,7 +1,9 @@
 
 class DataPackageController < ApplicationController
   
+
   def index
+    @data_packages = DataPackage.all 
   end
 
   def show
