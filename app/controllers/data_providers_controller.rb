@@ -1,11 +1,11 @@
 class DataProvidersController < ApplicationController
-  
+
   def index
-    @data_providers = DataProvider.all 
+    @data_providers = DataProvider.all
   end
 
   def new
-    @data_provider = DataProvider.new 
+    @data_provider = DataProvider.new
   end
 
   def create
@@ -25,13 +25,13 @@ class DataProvidersController < ApplicationController
   def destroy
   end
 
-private 
+private
 
-  def data_provider_params 
+  def data_provider_params
     params.require(:data_provider).permit(:name, :type)
-  end 
-  
+  end
+
 end
 
-  
+
 end
