@@ -1,4 +1,6 @@
-class DataProviderController < ApplicationController
+
+class DocumentsController < ApplicationController
+  
   def index
   end
 
@@ -8,10 +10,10 @@ class DataProviderController < ApplicationController
   def new
   end
 
-  def create
+  def edit
   end
 
-  def edit
+  def create
   end
 
   def update
@@ -19,4 +21,5 @@ class DataProviderController < ApplicationController
 
   def destroy
   end
+  
 end

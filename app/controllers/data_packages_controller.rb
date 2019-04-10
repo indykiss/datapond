@@ -1,7 +1,9 @@
 
-class DocumentController < ApplicationController
+class DataPackagesController < ApplicationController
   
+
   def index
+    @data_packages = DataPackage.all 
   end
 
   def show
@@ -10,11 +12,11 @@ class DocumentController < ApplicationController
   def new
   end
 
-  def edit
-  end
-
   def create
   end
+
+  def edit 
+  end 
 
   def update
   end
