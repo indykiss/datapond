@@ -11,6 +11,14 @@ class DataPackagesController < ApplicationController
   end
 
   def create
+    @data_package = DataPackage(data_package_params)
+
+      if @data_package.save 
+        #???
+      else 
+        #redirect_to 
+
+      end 
   end
 
   def show

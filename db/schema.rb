@@ -23,16 +23,12 @@ ActiveRecord::Schema.define(version: 2019_04_11_152452) do
   create_table "data_providers", force: :cascade do |t|
     t.string "name"
     t.text "type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "documents", force: :cascade do |t|
     t.string "name"
     t.text "raw_data"
     t.integer "data_package_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "favorites", force: :cascade do |t|
