@@ -1,24 +1,14 @@
 Rails.application.routes.draw do
-  get 'data_provider/index'
-  get 'data_provider/show'
-  get 'data_provider/new'
-  get 'data_provider/create'
-  get 'data_provider/edit'
-  get 'data_provider/update'
-  get 'data_provider/destroy'
-  get 'document/index'
-  get 'document/show'
-  get 'document/new'
-  get 'document/edit'
-  get 'document/create'
-  get 'document/update'
-  get 'document/destroy'
-  get 'data_package/index'
-  get 'data_package/show'
-  get 'data_package/new'
-  get 'data_package/create'
-  get 'data_package/update'
-  get 'data_package/destroy'
-  get 'user/index'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+ 
+  resources :users
+
+  resources :data_packages do 
+      resources :documents do 
+      end 
+    end 
+
+  resources :data_providers 
+
+  root 'users#welcome'
+  
 end

@@ -1,2 +1,6 @@
 <h1>DataPackage#show</h1>
 <p>Find me in app/views/data_package/show.html.erb</p>
+
+
+<h3> Update the data package and add documents</h3>
+<%= render 'form', data_package: @data_package, documents: @data_package.documents%>

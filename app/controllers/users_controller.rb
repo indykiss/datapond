@@ -1,6 +1,16 @@
 
 class UsersController < ApplicationController
 
+
+  def welcome 
+    if !logged_in? 
+        redirect to '/login'
+    else 
+      @user = User.find(session[:current_user_id])
+      render :welcome 
+    end 
+  end 
+
   def new
     @user = User.new 
   end
@@ -15,7 +25,6 @@ class UsersController < ApplicationController
         redirect_to signup_path 
       end 
   end 
-
 
 
 private 

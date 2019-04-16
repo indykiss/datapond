@@ -11,23 +11,27 @@ class DataPackagesController < ApplicationController
   end
 
   def create
-    @data_package = DataPackage(data_package_params)
+    @data_package = DataPackage.find(data_package_params)
 
       if @data_package.save 
-        #???
+        redirect_to data_provider_path(@data_package.data_provider, @data_package)
       else 
-        #redirect_to 
-
+       redirect_to new_data_provider_data_package_path(@data_provider)
       end 
   end
 
   def show
+      @data_package = DataPackage.find(params[:id])
   end
 
-  def edit
-  end
 
   def update
+    @data_package = DataPackage.find(params[:id])
+    if @building.save
+			redirect_to data_provider_data_package_path(@data_package.data_provider, @data_package)
+		else 
+      render :show 
+    end 
   end
 
   def destroy

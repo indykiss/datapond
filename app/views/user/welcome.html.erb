@@ -1,0 +1,14 @@
+
+
+<h1>Welcome to datapond, the pond for your data </h1> 
+<% if current_user %>
+	<% if current_user.role.nil? %>
+		<p>Each account can be either a user or a data provider.</p>
+		<h3>Are you a <%= link_to('data provider', new_data_provider_path) %> or a user? </h3>
+	<% else %>
+		<p>Your role is <%= current_user.role %>.</p>
+		<% if current_user.role == 'data provider' %>
+			<%= link_to('Manage data packages', data_provider_path(DataProvider.find_by(user: current_user))) %>
+		<% end %>
+	<% end %>
+<% end %>
