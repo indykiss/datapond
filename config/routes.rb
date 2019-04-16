@@ -1,5 +1,8 @@
+
 Rails.application.routes.draw do
  
+  root 'users#welcome'
+
   resources :users
 
   resources :data_packages do 
@@ -9,6 +12,7 @@ Rails.application.routes.draw do
 
   resources :data_providers 
 
-  root 'users#welcome'
+  get 'login' => 'users#new'
+
   
 end
