@@ -2,43 +2,39 @@
 class UsersController < ApplicationController
 
 
-  def welcome 
-    if !logged_in? 
-        redirect_to '/login'
-    else 
-      @user = User.find(session[:current_user_id])
-      render :welcome 
-    end 
-  end 
-
-  def login 
-
-  end 
+  #def welcome 
+   # if !logged_in? 
+    #    redirect_to '/login'
+    #else 
+     # @user = User.find(session[:current_user_id])
+      #render :welcome 
+   # end 
+ # end 
 
   def new
-    @user = User.new 
+    @user = User.new
   end
 
-  def create 
-    @user = User.new(user_params)
-
-      if @user.save 
-        session[:user_id] = @user.id
-        redirect_to user_path(@user_id)
-      else 
-        redirect_to signup_path 
-      end 
-  end 
+  def create
+      @user = User.find_by(email: params[:email])
+      if @user 
+        #&& @user.authenticate(params[:password])
+          session[:user_id] = @user.id
+          redirect_to data_packages_index_path 
+      else
+          render :new
+      end
+  end
 
   def show 
+    @user = User.find_by_id([params[:id]])
   end 
 
 
 private 
 
-
   def user_params 
-    params.require(:user).permit(:username, :email, :password)
+    params.permit(:username, :email, :password)
   end 
 
 end

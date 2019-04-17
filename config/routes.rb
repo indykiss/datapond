@@ -1,18 +1,29 @@
 
 Rails.application.routes.draw do
  
-  root 'users#welcome'
+  root 'sessions#home'
+
+  get '/signup', to: 'users#new'
+  post '/signup', to: 'users#create'
+
+  get '/signin', to: 'sessions#new'
+  post '/signin', to: 'sessions#create'
 
   resources :users
 
   resources :data_packages do 
-      resources :documents do 
-      end 
+    resources :documents do 
     end 
+  end 
 
-  resources :data_providers 
 
-  get 'login' => 'users#new'
-
+  post "/sessions/create", to: "sessions#create"
+  get '/auth/facebook/callback' => 'sessions#create_from_omniauth'
   
+ 
+
+  delete "/signout", to: "sessions#destroy"
+
+
+
 end

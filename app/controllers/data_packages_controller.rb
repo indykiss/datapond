@@ -39,7 +39,7 @@ class DataPackagesController < ApplicationController
 
     if current_user
       @data_package.destroy
-    #  redirect_to ????
+      redirect_to root_path
     end
   end
 

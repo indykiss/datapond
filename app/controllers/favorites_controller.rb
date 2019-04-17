@@ -3,13 +3,21 @@
 
 class FavoritesController < ApplicationController
 
-  skip_before_action :verify_authenticity_token
+#  skip_before_action :verify_authenticity_token
+
 
     def new
+      @user = User.find(params[:user_id])
+
+
     end
   
     def create 
       @favorite = Favorite.new(favorite_params)
+      @favorite.user_id = params(:user_id)
+
+
+
     end 
 
     def show 
