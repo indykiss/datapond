@@ -17,7 +17,6 @@ ActiveRecord::Schema.define(version: 2019_04_11_152452) do
     t.string "category"
     t.boolean "favorite", default: false
     t.integer "user_id"
-    t.integer "data_provider_id"
   end
 
   create_table "data_providers", force: :cascade do |t|

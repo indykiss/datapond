@@ -10,13 +10,22 @@ class DataPackagesController < ApplicationController
     @data_package = DataPackage.new
   end
 
-  def create
-    @data_package = DataPackage.find(data_package_params)
 
-      if @data_package.save 
-        redirect_to data_provider_path(@data_package.data_provider, @data_package)
+  # there's an issue with my IDs, as usual
+  # I need my user to actually save
+  # i think the user isn't saving because the top of the page
+  # it says that there's an error, should say user's email
+
+  #I'm currently working on getting the data package to save
+
+  def create
+    @data_package = DataPackage.new(data_package_params)
+   #current_user.id == @data_package.user_id
+
+      if @data_package
+        redirect_to data_package_path(@data_package)
       else 
-       redirect_to new_data_provider_data_package_path(@data_provider)
+       render :new
       end 
   end
 
@@ -46,7 +55,7 @@ class DataPackagesController < ApplicationController
 private
 
   def data_package_params
-    require(:data_package),permit(:name, :category, :favorite, :user_id, :data_provider_id)
+    params.permit(:name, :category, :favorite, :user_id)
   end
 
 end

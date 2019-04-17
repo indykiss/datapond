@@ -16,11 +16,11 @@ class UsersController < ApplicationController
   end
 
   def create
-      @user = User.find_by(email: params[:email])
-      if @user 
+      @user = User.new(user_params)
+      if @user
         #&& @user.authenticate(params[:password])
           session[:user_id] = @user.id
-          redirect_to data_packages_index_path 
+          redirect_to data_packages_path 
       else
           render :new
       end
