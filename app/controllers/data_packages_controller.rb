@@ -10,37 +10,18 @@ class DataPackagesController < ApplicationController
     @data_package = DataPackage.new
   end
 
-# in my user's controller, is working: 
-#  def create
- #   @user = User.new(user_params)
-  #  if @user
-      #&& @user.authenticate(params[:password])
-   #     session[:user_id] = @user.id
-    #    redirect_to data_packages_path 
-  #  else
-   #     render :new
-   # end
-# end
-
-# now I need to fix current_user. the data package isn't
-# thinking that there is an associated user ID
-# but i fixed the users, so they're working now
   def create
+    @data_package = DataPackage.create(data_package_params)
+    @data_package.user_id = current_user.id
+    @data_package.save!
 
-    @data_package = DataPackage.new(data_package_params)
-    
-#    @data_package = DataPackage.create(data_package_params)
-    #@data_package.user_id = params[:user_id]
 
-    @data_package = current_user.data_packages.new(data_package_params)
-
-    binding.pry
-
-      if @data_package.save
-        redirect_to root_path
+      if @data_package.valid?
+        redirect_to data_package_path(@data_package)
       else 
-       render :new
+       #redirect_to data_package_path
       end 
+
   end
 
   def show
@@ -69,7 +50,7 @@ class DataPackagesController < ApplicationController
 private
 
   def data_package_params
-    params.require(:data_package).permit(:name, :category, :favorite, :user_id, :id)
+    params.require(:data_package).permit(:name, :category, :favorite, :user_id)
   end
 
 end

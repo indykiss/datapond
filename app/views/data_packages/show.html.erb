@@ -2,5 +2,16 @@
 <p>Find me in app/views/data_package/show.html.erb</p>
 
 
-<h3> Update the data package and add documents</h3>
-<%= render 'form', data_package: @data_package, documents: @data_package.documents%>
+<h3> Here is your data package </h3>
+
+<h4> Name: <%= @data_package.name %> </h4>
+<h4> Category: <%= @data_package.category %> </h4>
+
+<h4> Belongs to: <%= @data_package.user.username %> </h4>
+
+<h3> Edit this data package? </h3>
+
+<h3> Add a document to this data package? </h3>
+
+<h3> See all data packages: </h3>
+<%= link_to data_packages_path(@index) %>

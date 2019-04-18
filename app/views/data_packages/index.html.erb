@@ -1,5 +1,14 @@
 <h1>DataPackage#index</h1>
 <p>Find me in app/views/data_package/index.html.erb</p>
 
-
+<h3> Add a new data package here: </h3>
 <%= link_to "Add a data package", new_data_package_path %>
+
+
+<h2> Here are all of your data packages: </h2>
+
+<% @user.data_packages.each do |data_package| %>
+    <li> <%= data_package.name%> 
+         <%= data_package.category%> 
+    </li>
+<% end %>

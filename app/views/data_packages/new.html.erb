@@ -3,8 +3,8 @@
 <h2> Create a new data package </h2>
 <p>Find me in app/views/data_package/new.html.erb</p>
 
-<%= form_for @data_package do |f| %>
 
+<%= form_for @data_package do |f|%>
     <%= f.label :name, "Name: " %>
     <%= f.text_field :name %>
 
@@ -16,5 +16,4 @@
 
     <%= f.submit "Create data package" %> 
 
-
-    <% end %>
+<% end %>
