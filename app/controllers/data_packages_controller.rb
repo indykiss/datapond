@@ -26,16 +26,18 @@ class DataPackagesController < ApplicationController
 # thinking that there is an associated user ID
 # but i fixed the users, so they're working now
   def create
-    @current_user = User.find_by(username: params[:username])
+
+    @data_package = DataPackage.new(data_package_params)
     
-    @data_package = DataPackage.create(data_package_params)
-    @data_package.user_id = params[:user_id]
+#    @data_package = DataPackage.create(data_package_params)
+    #@data_package.user_id = params[:user_id]
 
-    #@data_package = current_user.data_packages.new(data_package_params)
+    @data_package = current_user.data_packages.new(data_package_params)
 
+    binding.pry
 
-      if @data_package
-        redirect_to data_package_path(@data_package)
+      if @data_package.save
+        redirect_to root_path
       else 
        render :new
       end 
@@ -67,7 +69,7 @@ class DataPackagesController < ApplicationController
 private
 
   def data_package_params
-    params.require(:data_package).permit(:name, :category, :favorite, :user_id)
+    params.require(:data_package).permit(:name, :category, :favorite, :user_id, :id)
   end
 
 end

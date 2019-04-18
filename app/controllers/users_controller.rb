@@ -17,7 +17,7 @@ class UsersController < ApplicationController
 
   def create
       @user = User.new(user_params)
-      if @user
+      if @user.save
         #&& @user.authenticate(params[:password])
           session[:user_id] = @user.id
           redirect_to data_packages_path 
