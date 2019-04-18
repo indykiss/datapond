@@ -19,11 +19,6 @@ ActiveRecord::Schema.define(version: 2019_04_11_152452) do
     t.integer "user_id"
   end
 
-  create_table "data_providers", force: :cascade do |t|
-    t.string "name"
-    t.text "type"
-  end
-
   create_table "documents", force: :cascade do |t|
     t.string "name"
     t.text "raw_data"

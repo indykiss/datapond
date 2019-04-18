@@ -26,10 +26,13 @@ class DataPackagesController < ApplicationController
 # thinking that there is an associated user ID
 # but i fixed the users, so they're working now
   def create
-    @data_package = DataPackage.new(data_package_params)
-    binding.pry
+    @current_user = User.find_by(username: params[:username])
+    
+    @data_package = DataPackage.create(data_package_params)
+    @data_package.user_id = params[:user_id]
 
-    current_user.id == @data_package.user_id
+    #@data_package = current_user.data_packages.new(data_package_params)
+
 
       if @data_package
         redirect_to data_package_path(@data_package)
@@ -46,7 +49,7 @@ class DataPackagesController < ApplicationController
   def update
     @data_package = DataPackage.find(params[:id])
     if @building.save
-			redirect_to data_provider_data_package_path(@data_package.data_provider, @data_package)
+      redirect_to data_package_path(@data_package)
 		else 
       render :show 
     end 
