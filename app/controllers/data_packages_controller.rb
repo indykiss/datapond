@@ -10,17 +10,26 @@ class DataPackagesController < ApplicationController
     @data_package = DataPackage.new
   end
 
+# in my user's controller, is working: 
+#  def create
+ #   @user = User.new(user_params)
+  #  if @user
+      #&& @user.authenticate(params[:password])
+   #     session[:user_id] = @user.id
+    #    redirect_to data_packages_path 
+  #  else
+   #     render :new
+   # end
+# end
 
-  # there's an issue with my IDs, as usual
-  # I need my user to actually save
-  # i think the user isn't saving because the top of the page
-  # it says that there's an error, should say user's email
-
-  #I'm currently working on getting the data package to save
-
+# now I need to fix current_user. the data package isn't
+# thinking that there is an associated user ID
+# but i fixed the users, so they're working now
   def create
     @data_package = DataPackage.new(data_package_params)
-   #current_user.id == @data_package.user_id
+    binding.pry
+
+    current_user.id == @data_package.user_id
 
       if @data_package
         redirect_to data_package_path(@data_package)
@@ -55,7 +64,7 @@ class DataPackagesController < ApplicationController
 private
 
   def data_package_params
-    params.permit(:name, :category, :favorite, :user_id)
+    params.require(:data_package).permit(:name, :category, :favorite, :user_id)
   end
 
 end
