@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   resources :users
 
+  resources :documents, only: [:show, :create]
   resources :data_packages do 
     resources :documents do 
     end 
