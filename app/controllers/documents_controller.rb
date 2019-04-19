@@ -9,11 +9,9 @@ def new
    @document = Document.new
 end
 
-
 def create
     @document = Document.create(document_params)
-    @document.save!
-
+    @document.save
       if @document.valid?
         redirect_to document_path(@document)
       else 
@@ -22,13 +20,7 @@ def create
   end
 
   def show
-    @document = Document.new
-  end
-
-  def update
-  end
-
-  def destroy
+    @document = Document.find(params[:id])
   end
 
   private 

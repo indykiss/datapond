@@ -18,8 +18,8 @@ class SessionsController < ApplicationController
     end
     
     def create_from_omniauth
-        @user = User.find_or_create_by(uid: auth['uid']) do |u|
-            u.name = auth['info']['name']
+        @user = User.find_or_create_by(id: auth['id']) do |u|
+            u.username = auth['info']['username']
             u.email = auth['info']['email']
         end
         session[:user_id] = @user.id
@@ -27,7 +27,7 @@ class SessionsController < ApplicationController
     end
 
     def destroy
-        session.delete :user_id
+        session.clear
         redirect_to root_path
     end
 

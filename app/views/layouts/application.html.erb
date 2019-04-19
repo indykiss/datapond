@@ -11,9 +11,15 @@
 
   <body>
 
-    #<% if logged_in?  %>    
-    #<% else  %>
-    #<% end %>
+  <% if current_user %>
+    <p>Signed in as <%= "#{current_user.email}" %></p>
+    <%= link_to("Sign out", destroy_session_path, :method => 'delete') %>
+    <%= link_to("Home", data_packages_path) %>
+ <% else %>
+ <%= link_to "Sign Up", signup_path %>
+ <%= link_to "Sign In", signin_path %>
+ <%= link_to "Log In with Facebook", '/auth/facebook' %>
+ <% end %>
 
 
     <%= yield %>

@@ -5,7 +5,7 @@
 <%= link_to "Add a data package", new_data_package_path %>
 
 
-<h2> Here are all of your data packages: </h2>
+<h2> Here are all the data packages: </h2>
 
 <% @data_packages.each do |data_package| %>
     <li> Name: <a href = "data_packages/<%= data_package.id%>"><%= data_package.name%></a> <br>
@@ -13,3 +13,6 @@
          Belongs to: <%= data_package.user.username%>
     </li>
 <% end %>
+
+
+<br><br>
