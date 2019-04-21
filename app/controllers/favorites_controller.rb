@@ -9,11 +9,21 @@ class FavoritesController < ApplicationController
     end
   
     def create 
-      @favorite = Favorite.new(favorite_params)
-      @favorite.user_id = params(:user_id)
-      @favorite.data_package_id = params(:data_package_id)
+      @favorite = Favorite.create(favorite_params)
+      @favorite.user_id = current_user.id
+      @favorte.data_package_id = 
+      @favorite.save
+      binding.pry
 
+      if @favorite.valid?
+          redirect_to favorite_path(@favorite)
+        else                                                                      
+         #redirect_to document_path
+        end   
+    end 
 
+    def index 
+      @favorites = Favorite.all
     end 
 
     def show 
@@ -24,7 +34,7 @@ class FavoritesController < ApplicationController
   private 
   
     def favorite_params 
-      params.require(:favorite).permit(:user_id, :data_package_id)
+      params.require(:favorite).permit(:user_id, :data_package_id, :notes)
     end 
   
   end

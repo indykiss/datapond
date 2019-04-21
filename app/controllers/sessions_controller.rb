@@ -18,10 +18,11 @@ class SessionsController < ApplicationController
     end
     
     def create_from_omniauth
-        @user = User.find_or_create_by(email: auth[:email]) do |u|
-            u.username = auth['username']
-            u.email = auth['email']
+        @auth = request.env['omniauth.auth']
+        @user = User.find_or_create_by(uid: @auth['uid']) do |u|
+          u.username = @auth['info']['username']
         end
+    
         session[:user_id] = @user.id
         render 'sessions/home'
     end
@@ -29,12 +30,6 @@ class SessionsController < ApplicationController
     def destroy
         session.delete :user_id
         redirect_to root_path
-    end
-
-    private
- 
-    def auth
-      request.env['omniauth.auth']
     end
 
 end

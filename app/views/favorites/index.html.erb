@@ -1,0 +1,11 @@
+<h5>Favorite#index</h5>
+<p>Find me in app/views/favorite/index.html.erb</p>
+
+<h3> Add a new favorite here: </h3>
+<%= link_to "Add a favorite", new_favorite_path %>
+
+<h2> See all your favorites </h2>
+<% @favorites.each do |favorite| %>
+    <li> Data package: 
+    </li><br>
+<% end %>

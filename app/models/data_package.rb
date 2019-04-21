@@ -1,8 +1,8 @@
 
 class DataPackage < ApplicationRecord
-    has_many :documents 
     belongs_to :user 
-    #validates :name 
+    has_many :documents
+    validates_presence_of :name 
     accepts_nested_attributes_for :documents 
 
 end

@@ -1,5 +1,5 @@
-<h1>Document#index</h1>
-<p>Find me in app/views/document/index.html.erb</p>
+<h5>Document#index</h5>
+<p>Find me in app/views/documents/index.html.erb</p>
 
 <h3> Add a new document here: </h3>
 <%= link_to "Add a document", new_document_path %>
@@ -8,6 +8,6 @@
 
 <% @documents.each do |document| %>
     <li> Name: <a href = "documents/<%= document.id%>"><%= document.name%></a> <br>
-         Category: <%= document.raw_data%> 
-    </li>
+    Raw data: <%= document.raw_data%> <br> Belongs to data package: <a href = "data_packages/<%= document.data_package.id%>"> <%= document.data_package.name%> </a> 
+    </li><br>
 <% end %>

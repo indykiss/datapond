@@ -13,20 +13,18 @@ Rails.application.routes.draw do
 
   resources :users
 
-  resources :documents, only: [:new, :show, :create]
+  resources :documents, only: [:new, :show, :create, :index]
 
   resources :data_packages do 
     resources :documents do 
     end 
   end 
 
+  resources :favorites
+
   post "/sessions/create", to: "sessions#create"
   get '/auth/facebook' => 'sessions#create_from_omniauth'
   
- 
-
   delete "/signout", to: "sessions#destroy"
-
-
 
 end

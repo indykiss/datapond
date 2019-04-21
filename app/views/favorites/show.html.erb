@@ -1,0 +1,9 @@
+<h5>Favorite#show</h5>
+<p>Find me in app/views/favorite/show.html.erb</p>
+
+
+<h3> You favorited this data package </h3>
+<h4> Name: <%= @favorite.data_package.name %> </h4>
+
+<h3> See all your favorited data packages: </h3>
+<button type = "button"> <%= link_to "See all favs", favorites_path(@index) %> </button>

@@ -1,18 +1,18 @@
-<h1>DataPackage#index</h1>
+<h5>DataPackage#index</h5>
 <p>Find me in app/views/data_package/index.html.erb</p>
-
-<h3> Add a new data package here: </h3>
-<%= link_to "Add a data package", new_data_package_path %>
-
 
 <h2> Here are all the data packages: </h2>
 
 <% @data_packages.each do |data_package| %>
     <li> Name: <a href = "data_packages/<%= data_package.id%>"><%= data_package.name%></a> <br>
-         Category: <%= data_package.category%> 
+         Category: <%= data_package.category%> <br>
          Belongs to: <%= data_package.user.username%>
     </li>
+    <br>
 <% end %>
 
+
+<h3> Add a new data package here: </h3>
+<%= link_to "Add a data package", new_data_package_path %>
 
 <br><br>

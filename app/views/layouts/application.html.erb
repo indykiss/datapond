@@ -1,6 +1,26 @@
 <!DOCTYPE html>
 <html>
   <head>
+
+  <script>
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId      : '586477458510794',
+        cookie     : true,
+        xfbml      : true,
+        version    : 'v3.2'
+      });
+      FB.AppEvents.logPageView();     
+    };
+    (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    </script>
+
     <title>Datapond</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -13,12 +33,14 @@
 
   <% if current_user %>
     <p>Signed in as <%= "#{current_user.email}" %></p>
-    <%= link_to "Signout", signout_path, method: :delete %>
+    <%= link_to "Sign out", signout_path, method: :delete %>
     <%= link_to "Home", data_packages_path %>
- <% else %>
-    <%= link_to "Sign Up", signup_path %>
-    <%= link_to "Sign In", signin_path %>
-    <%= link_to "Log In with Facebook", '/auth/facebook' %>
+    <%= link_to "Favorites", favorites_path %>
+
+    <% else %>
+   <h3> <%= link_to "Sign up", signup_path %><br> </h3>
+   <h3> <%= link_to "Sign in", signin_path %><br> </h3>
+   <h3> <%= link_to "Sign in with Facebook", '/auth/facebook' %> </h3>
  <% end %>
 
     <%= yield %>

@@ -1,0 +1,16 @@
+<h5>Favorite#new</h5>
+<p>Find me in app/views/favorite/new.html.erb</p>
+
+
+<%= render 'form' %>
+
+<%= form_for @favorite do |f|%>
+    <%= f.label :notes, "Notes: " %>
+    <%= f.text_field :notes %>
+
+    <%= f.label :data_package_id, "Data Package it belongs to?:" %>
+    <%= f.collection_select :data_package_id, DataPackage.all, :id, :name %>
+
+    <%= f.submit "Add favorite" %> 
+
+<% end %>

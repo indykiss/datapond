@@ -28,12 +28,14 @@ ActiveRecord::Schema.define(version: 2019_04_11_152452) do
   create_table "favorites", force: :cascade do |t|
     t.integer "data_package_id"
     t.integer "user_id"
+    t.text "notes"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "email"
     t.string "password_digest"
+    t.integer "uid"
   end
 
 end
