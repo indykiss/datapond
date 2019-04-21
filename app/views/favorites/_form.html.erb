@@ -2,7 +2,6 @@
 
 <%= form_for @favorite  do |f|%>
     <%= f.hidden_field :user_id, value: current_user.id %>
-    <%= f.hidden_field :data_package_id, value: data_package.id %>
     
     <%= f.label :notes, "Notes: " %>
     <%= f.text_field :notes %>

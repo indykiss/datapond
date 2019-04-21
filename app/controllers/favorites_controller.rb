@@ -5,15 +5,13 @@ class FavoritesController < ApplicationController
 #  skip_before_action :verify_authenticity_token
 
     def new
-      @favorite = Favorite.new(favorite_params)
+      @favorite = Favorite.new
     end
   
     def create 
       @favorite = Favorite.create(favorite_params)
       @favorite.user_id = current_user.id
-      @favorte.data_package_id = 
       @favorite.save
-      binding.pry
 
       if @favorite.valid?
           redirect_to favorite_path(@favorite)
@@ -24,12 +22,13 @@ class FavoritesController < ApplicationController
 
     def index 
       @favorites = Favorite.all
+      binding.pry
     end 
 
     def show 
       @favorite = Favorite.find(params[:id])
+      @favorited_data_package = DataPackage.find(@favorite.data_package_id)
     end 
-  
   
   private 
   
