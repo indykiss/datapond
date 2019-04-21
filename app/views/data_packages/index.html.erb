@@ -6,7 +6,7 @@
 <% @data_packages.each do |data_package| %>
     <li> Name: <a href = "data_packages/<%= data_package.id%>"><%= data_package.name%></a> <br>
          Category: <%= data_package.category%> <br>
-         Belongs to: <%= data_package.user.username%>
+         Made by: <%= data_package.user.username%>
     </li>
     <br>
 <% end %>

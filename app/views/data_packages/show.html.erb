@@ -4,7 +4,7 @@
 <h3> Here is the data package </h3>
  Name: <%= @data_package.name %> 
 <br> Category: <%= @data_package.category %> 
-<br> Belongs to: <%= @data_package.user.username %> 
+<br> Made by: <%= @data_package.user.username %> 
 
 <h3> Favorite this data package? </h3>
 <button type = "button"> <%=link_to "Add favorite", new_favorite_path(@favorite)%> </button>

@@ -21,8 +21,21 @@ class FavoritesController < ApplicationController
     end 
 
     def index 
+#      Favorite.joins(:data_packages, :favorites).where("(current_user.id == favorites.user_id) AND (data_packages.id == favorite.data_packages.id)" )
+      #@jt = DataPackage.joins(:favorites).select(:name, :notes).where("favorites.data_package_id = data_packages.id")
       @favorites = Favorite.all
-      binding.pry
+      @my_favorites = []
+      @my_notes = []
+
+      @favorites.each do  |favorite|
+        if favorite.user_id == current_user.id
+          @my_favorites << DataPackage.find_by_id(favorite.data_package_id) 
+          @my_notes << favorite.notes
+        end  
+      end 
+      @my_favorites
+      @my_notes
+
     end 
 
     def show 

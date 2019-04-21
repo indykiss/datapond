@@ -5,7 +5,10 @@
 <%= link_to "Add a favorite", new_favorite_path %>
 
 <h2> See all your favorites </h2>
-<% @favorites.each do |favorite| %>
-    <li> Data package: 
-    </li><br>
+
+<% @my_favorites.zip(@my_notes).each do |my_fav, my_note| %>
+    <li> Name: <a href = "data_packages/<%= my_fav.id%>"> <%= my_fav.name%></a><br>
+      Notes: <%= my_note%> <br> </li>
+    <br>
 <% end %>
+

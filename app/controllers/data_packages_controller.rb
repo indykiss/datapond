@@ -12,7 +12,7 @@ class DataPackagesController < ApplicationController
   def create
     @data_package = DataPackage.create(data_package_params)
     @data_package.user_id = current_user.id
-    @data_package.save!
+    @data_package.save
     
       if @data_package.valid?
         redirect_to data_package_path(@data_package)
