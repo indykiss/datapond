@@ -1,6 +1,5 @@
-<h5>Document#new</h5>
-<p>Find me in app/views/document/new.html.erb</p>
 
+<h2> Create a new document for the <%= @document.data_package.name %> data package here </h2>
 
 <%= form_for @document do |f|%>
     <%= f.label :name, "Name: " %>
@@ -9,8 +8,7 @@
     <%= f.label :raw_data, "Raw Data: " %>
     <%= f.text_field :raw_data %>
 
-    <%= f.label :data_package_id, "Data Package it belongs to?:" %>
-    <%= f.collection_select :data_package_id, DataPackage.all, :id, :name %>
+    <%= f.hidden_field :data_package_id%>
 
     <%= f.submit "Create document" %> 
 

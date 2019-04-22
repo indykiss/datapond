@@ -1,10 +1,8 @@
-<h5>Favorite#index</h5>
-<p>Find me in app/views/favorite/index.html.erb</p>
 
-<h3> Add a new favorite here: </h3>
+<h2> Add a new favorite here: </h2>
 <%= link_to "Add a favorite", new_favorite_path %>
 
-<h2> See all your favorites </h2>
+<h3> See all your favorites </h3>
 
 <% @my_favorites.zip(@my_notes).each do |my_fav, my_note| %>
     <li> Name: <a href = "data_packages/<%= my_fav.id%>"> <%= my_fav.name%></a><br>

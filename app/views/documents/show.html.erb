@@ -1,10 +1,8 @@
-<h5>Document#show</h5>
-<p>Find me in app/views/document/show.html.erb</p>
 
-
-<h3> Here is your document </h3>
+<h2> Here is your document, connected to <%= @document.data_package.name %> </h2>
 <h4> Name: <%= @document.name %> </h4>
 <h4> Raw data: <%= @document.raw_data %> </h4>
 
 <h3> See all documents: </h3>
-<button type = "button"> <%= link_to "See all documents", documents_path(@index) %> </button>
+<button type = "button"> 
+<%= link_to "See all documents", documents_path(@index) %> </button>

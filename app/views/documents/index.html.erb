@@ -1,10 +1,5 @@
-<h5>Document#index</h5>
-<p>Find me in app/views/documents/index.html.erb</p>
 
-<h3> Add a new document here: </h3>
-<%= link_to "Add a document", new_document_path %>
-
-<h2> Here are all of the documents and associated packages: </h2>
+<h2> Here are all the documents and associated packages: </h2>
 
 <% @documents.each do |document| %>
     <li> Name: <a href = "documents/<%= document.id%>"><%= document.name%></a> <br>

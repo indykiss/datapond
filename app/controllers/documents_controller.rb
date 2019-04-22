@@ -1,26 +1,28 @@
 
 class DocumentsController < ApplicationController
-  
-def index
-   @documents = Document.all.descending_order
-end
+    
+  def index
+    @documents = Document.all.descending_order
+  end
 
-def new
-   @document = Document.new
-end
+  def new
+    @document = Document.new(data_package_id: params[:data_package_id])
+  end
 
-def create
-    @document = Document.create(document_params)
-    @document.save
-      if @document.valid?
-        redirect_to document_path(@document)
-      else 
-       #redirect_to document_path
-      end   
+  def create
+      @document = Document.create(document_params)
+      @data_package_id = @document.data_package_id 
+      @document.save
+        if @document.valid?
+          redirect_to data_package_document_path(@data_package_id, @document)
+        else 
+          render :new
+        end   
   end
 
   def show
-    @document = Document.find(params[:id])
+    @data_package = DataPackage.find(params[:data_package_id])
+    @document = @data_package.documents.find(params[:id])
   end
 
   private 

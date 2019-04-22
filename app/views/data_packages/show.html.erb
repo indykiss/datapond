@@ -1,7 +1,5 @@
-<h5>DataPackage#show</h5>
-<p>Find me in app/views/data_package/show.html.erb</p>
 
-<h3> Here is the data package </h3>
+<h2> Here is the data package </h2>
  Name: <%= @data_package.name %> 
 <br> Category: <%= @data_package.category %> 
 <br> Made by: <%= @data_package.user.username %> 
@@ -9,7 +7,7 @@
 <h3> Favorite this data package? </h3>
 <button type = "button"> <%=link_to "Add favorite", new_favorite_path(@favorite)%> </button>
 
-<h3> Add a document? </h3>
+<h3> Add a document to this data package? </h3>
 <button type = "button"> <%=link_to "Add a doc", new_data_package_document_path(@data_package)%> </button>
 
 <h3> See all data packages: </h3>

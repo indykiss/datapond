@@ -1,8 +1,5 @@
 
-
 class FavoritesController < ApplicationController
-
-#  skip_before_action :verify_authenticity_token
 
     def new
       @favorite = Favorite.new
@@ -16,12 +13,12 @@ class FavoritesController < ApplicationController
       if @favorite.valid?
           redirect_to favorite_path(@favorite)
         else                                                                      
-         #redirect_to document_path
+         render :new
         end   
     end 
 
     def index 
-#      Favorite.joins(:data_packages, :favorites).where("(current_user.id == favorites.user_id) AND (data_packages.id == favorite.data_packages.id)" )
+      #Favorite.joins(:data_packages, :favorites).where("(current_user.id == favorites.user_id) AND (data_packages.id == favorite.data_packages.id)" )
       #@jt = DataPackage.joins(:favorites).select(:name, :notes).where("favorites.data_package_id = data_packages.id")
       @favorites = Favorite.all
       @my_favorites = []
@@ -33,9 +30,6 @@ class FavoritesController < ApplicationController
           @my_notes << favorite.notes
         end  
       end 
-      @my_favorites
-      @my_notes
-
     end 
 
     def show 
