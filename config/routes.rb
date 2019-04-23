@@ -18,15 +18,12 @@ Rails.application.routes.draw do
   end 
 
   resources :documents
-
   resources :favorites
 
   post '/sessions/create', to: 'sessions#create'
 
   get '/auth/facebook/callback', to: 'sessions#create'
-  get '/auth/failure', to: redirect('/')
-
-#  get '/auth/facebook' => 'sessions#create_from_omniauth'
+  get '/auth/github/callback', to: 'sessions#create'
   
   delete '/signout', to: 'sessions#destroy'
 
