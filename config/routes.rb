@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get '/signin', to: 'sessions#new'
   post '/signin', to: 'sessions#create'
 
-  delete "sessions/signout", to: "sessions#destroy"
+  delete 'sessions/signout', to: 'sessions#destroy'
 
   resources :users
 
@@ -21,13 +21,13 @@ Rails.application.routes.draw do
 
   resources :favorites
 
-  post "/sessions/create", to: "sessions#create"
+  post '/sessions/create', to: 'sessions#create'
 
-  get 'auth/facebook/callback', to: 'sessions#create_from_omniauth'
-  get 'auth/failure', to: redirect('/')
+  get '/auth/facebook/callback', to: 'sessions#create'
+  get '/auth/failure', to: redirect('/')
 
 #  get '/auth/facebook' => 'sessions#create_from_omniauth'
   
-  delete "/signout", to: "sessions#destroy"
+  delete '/signout', to: 'sessions#destroy'
 
 end

@@ -1,24 +1,29 @@
-# README
+README
+Datapond is a platform for sharing news and market data to facilitate analytics. Datapond allows users to create an account through the site or through Facebook. Once logged in, they are able to create and view data packages, and their associated documents. Any particularly good data package can be favorited by the user, to be accessed later.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Installation for OS X, Windows, Linux
+Clone this repository and then execute:
 
-Things you may want to cover:
+$ bundle
 
-* Ruby version
+Uses Ruby v2.4.2
 
-* System dependencies
+Then run:
 
-* Configuration
+$ rake db:migrate
 
-* Database creation
+Then run:
 
-* Database initialization
+$ rails s
 
-* How to run the test suite
+Then open page in browser according to web address displayed in terminal (ex. https://localhost:3000).
 
-* Services (job queues, cache servers, search engines, etc.)
+Built With
+Ruby on Rails
 
-* Deployment instructions
+Contributing
+Bug reports and pull requests are welcome on GitHub at https://github.com/indykiss/datapond.
 
-* ...
+License
+The web app is available as open source under the terms of the MIT License.
+
