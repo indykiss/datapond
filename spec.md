@@ -13,9 +13,9 @@ Specs:
 - [X] Include logout (how e.g. Devise) -- built
 - [X] Include nested resource "new" form (URL e.g. recipes/1/ingredients/new) -- Document's new is nested in DataPackage
 - [X] Include nested resource show or index (URL e.g. users/2/recipes) -- Document's show is nested in DataPackage
+- [X] Include third party signup/login (how e.g. Devise/OmniAuth) Facebook with oauth
 
 - [ ] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)
-- [ ] Include third party signup/login (how e.g. Devise/OmniAuth)
 - [ ] Include form display of validation errors (form URL e.g. /recipes/new)
 
 Confirm:

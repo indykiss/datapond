@@ -2,7 +2,7 @@
 class DocumentsController < ApplicationController
     
   def index
-    @documents = Document.all.descending_order
+    @documents = Document.descending_order
   end
 
   def new

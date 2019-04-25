@@ -6,4 +6,8 @@ class Document < ApplicationRecord
     scope :descending_order, -> {order("name ASC")}
 
     
+    def self.descending_order
+        order(name: :asc)
+    end 
+
 end

@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get '/signin', to: 'sessions#new'
   post '/signin', to: 'sessions#create'
 
-  delete 'sessions/signout', to: 'sessions#destroy'
+  delete '/signout', to: 'sessions#destroy'
 
   resources :users
 
@@ -25,6 +25,4 @@ Rails.application.routes.draw do
   get '/auth/facebook/callback', to: 'sessions#create'
   get '/auth/github/callback', to: 'sessions#create'
   
-  delete '/signout', to: 'sessions#destroy'
-
 end

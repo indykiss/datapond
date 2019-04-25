@@ -1,1 +1,12 @@
-<h2>:( </h2>
+
+
+
+
+<% if logged_in?%>
+<h2> Add a data package </h2>
+<button><%= link_to "Add here", new_data_package_path %></button>
+
+<h2> See all data packages </h2>
+<button><%= link_to "Wall of data packages", data_packages_path %></button>
+
+<% end %>

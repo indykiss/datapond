@@ -17,6 +17,7 @@ class UsersController < ApplicationController
   end
 
   def show 
+    redirect_to data_packages_path 
   end 
 
 private 

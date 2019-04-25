@@ -9,8 +9,41 @@
     <br>
 <% end %>
 
+<h3> Bloomberg data packs: </h3>
+<% @data_packages.bloomberg.each do |data_package| %>
+    <li> Name: <a href = "data_packages/<%= data_package.id%>"><%= data_package.name%></a> <br>
+         Category: <%= data_package.category%> <br>
+         Made by: <%= data_package.user.username%>
+    </li>
+    <br>
+<% end %>
+
+<h3> Reuters data packs: </h3>
+<% @data_packages.reuters.each do |data_package| %>
+    <li> Name: <a href = "data_packages/<%= data_package.id%>"><%= data_package.name%></a> <br>
+         Category: <%= data_package.category%> <br>
+         Made by: <%= data_package.user.username%>
+    </li>
+    <br>
+<% end %>
+
+<h3> CapIQ data packs: </h3>
+<% @data_packages.capiq.each do |data_package| %>
+    <li> Name: <a href = "data_packages/<%= data_package.id%>"><%= data_package.name%></a> <br>
+         Category: <%= data_package.category%> <br>
+         Made by: <%= data_package.user.username%>
+    </li>
+    <br>
+<% end %>
+<br>
 
 <h3> Add a new data package here: </h3>
 <%= link_to "Add a data package", new_data_package_path %>
+
+<br>
+
+<h2> Here are all the documents and associated packages: </h2>
+
+<%= link_to "All the documents", documents_path %>
 
 <br><br>
