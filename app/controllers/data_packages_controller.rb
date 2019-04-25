@@ -1,8 +1,12 @@
 
 class DataPackagesController < ApplicationController
 
-  def index
-    @data_packages = DataPackage.all
+  def index    
+    if params[:name]
+      @data_packages = DataPackage.search_by_name(params[:name])
+    else 
+     @data_packages = DataPackage.all
+    end 
   end
 
   def new

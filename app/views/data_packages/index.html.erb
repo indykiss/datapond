@@ -9,6 +9,15 @@
     <br>
 <% end %>
 
+<h3> Search: </h3>
+
+<%= form_tag("/data_packages", method: "get") do %>
+    <%= label_tag(:q, "Search for name of data package:") %>
+    <%= text_field_tag(:name) %>
+    <%= submit_tag("Search") %>
+  <% end %>
+
+
 <h3> Bloomberg data packs: </h3>
 <% @data_packages.bloomberg.each do |data_package| %>
     <li> Name: <a href = "data_packages/<%= data_package.id%>"><%= data_package.name%></a> <br>

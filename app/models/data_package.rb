@@ -8,5 +8,6 @@ class DataPackage < ApplicationRecord
     scope :bloomberg, -> {where(name: "Bloomberg")}
     scope :reuters, -> {where(name: "Reuters")}
     scope :capiq, -> {where(name: "CapIQ")}
-
+    scope :search_by_name, -> (search_name){where("name = ?", search_name)}
+  
 end
