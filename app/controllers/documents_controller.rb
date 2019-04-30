@@ -25,7 +25,7 @@ class DocumentsController < ApplicationController
     @document = @data_package.documents.find(params[:id])
   end
 
-  private 
+private 
 
   def document_params
     params.require(:document).permit(:name, :raw_data, :data_package_id)

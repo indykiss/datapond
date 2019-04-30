@@ -23,6 +23,8 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-github'
 gem 'dotenv-rails'
+gem 'flash_rails_messages'
+
 
 gem 'activerecord-session_store'
 
