@@ -15,11 +15,10 @@ Specs:
 - [X] Include nested resource show or index (URL e.g. users/2/recipes) -- Document's show is nested in DataPackage
 - [X] Include third party signup/login (how e.g. Devise/OmniAuth) Facebook with oauth
 - [X] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)
-
-- [ ] Include form display of validation errors (form URL e.g. /recipes/new)
+- [X] Include form display of validation errors (form URL e.g. /recipes/new)
 
 Confirm:
-- [ ] The application is pretty DRY
-- [ ] Limited logic in controllers
-- [ ] Views use helper methods if appropriate
-- [ ] Views use partials if appropriate
+- [X] The application is pretty DRY
+- [X] Limited logic in controllers
+- [X] Views use helper methods if appropriate
+- [X] Views use partials if appropriate
