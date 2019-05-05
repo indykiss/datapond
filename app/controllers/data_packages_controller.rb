@@ -2,6 +2,8 @@
 class DataPackagesController < ApplicationController
 
   def index    
+    # pull out the "here all data packages" and use the search 
+    # look at this, weird that I use an instance method to refer to the DataPackage class     
     if params[:name]
       @data_packages = DataPackage.search_by_name(params[:name])
     else 
@@ -14,10 +16,9 @@ class DataPackagesController < ApplicationController
   end
 
   def create
-    @data_package = DataPackage.create(data_package_params)
+    @data_package = DataPackage.new(data_package_params)
     @data_package.user_id = current_user.id
-    @data_package.save
-      if @data_package.valid?
+      if @data_package.save 
         redirect_to data_package_path(@data_package)
       else 
        render :new
@@ -25,7 +26,7 @@ class DataPackagesController < ApplicationController
   end
 
   def show
-      @data_package = DataPackage.find(params[:id])
+    @data_package = DataPackage.find(params[:id])
   end
   
 private

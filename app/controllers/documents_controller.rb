@@ -2,7 +2,12 @@
 class DocumentsController < ApplicationController
     
   def index
-    @documents = Document.descending_order
+    if params[:data_package_id]
+      @documents = DataPackage.find(params[:data_package_id]).documents
+      @data_package = DataPackage.find(params[:data_package_id])
+    else 
+      @documents = Document.all
+    end
   end
 
   def new

@@ -1,6 +1,8 @@
 
 Rails.application.routes.draw do
  
+  resources :categories
+
   root 'sessions#home'
 
   get '/signup', to: 'users#new'
@@ -14,7 +16,9 @@ Rails.application.routes.draw do
   resources :users
 
   resources :data_packages do 
-    resources :documents, only: [:new, :show]
+    # need to build a feature for seeing all the documents for a particular data package
+    # or if i'm not seeing a particular data package, show all data packages
+    resources :documents, only: [:new, :show, :index]
   end 
 
   resources :documents

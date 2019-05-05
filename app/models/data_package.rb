@@ -4,6 +4,10 @@ class DataPackage < ApplicationRecord
     has_many :documents
     has_many :favorites
     validates_presence_of :name 
+    # need to add in a true has many through relationship
+
+    # catgory can be a model, categories has many data packages, then many users through data packages. join table!
+    # searchable through category 
     accepts_nested_attributes_for :documents 
     scope :bloomberg, -> {where(name: "Bloomberg")}
     scope :reuters, -> {where(name: "Reuters")}

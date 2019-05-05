@@ -1,5 +1,13 @@
 
-<h2> Here are all the documents and associated packages: </h2>
+<h3> Here are the documents for: 
+
+<% if @data_package %>
+    <%= @data_package.name%>
+    <% else %>
+    <%= "Everything" %>
+<% end %>
+</h3>
+<br>
 
 <% @documents.each do |document| %>
     <li> Name: <a href = "documents/<%= document.id%>"><%= document.name%></a> <br>

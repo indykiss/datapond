@@ -1,13 +1,5 @@
 
-<h2> Here are all the data packages: </h2>
 
-<% @data_packages.each do |data_package| %>
-    <li> Name: <a href = "data_packages/<%= data_package.id%>"><%= data_package.name%></a> <br>
-         Category: <%= data_package.category%>  
-         | Created by: <%= data_package.user.username%>
-    </li>
-    <br>
-<% end %>
 
 <h3> Search: </h3>
 
@@ -16,9 +8,33 @@
     <%= text_field_tag(:name) %>
     <%= submit_tag("Search") %>
   <% end %>
+<br>
+
+<h3> All data packages: </h3>
+
+<% @data_packages.each do |data_package| %>
+    <li> Name: <a href = "data_packages/<%= data_package.id%>"><%= data_package.name%></a> <br>
+         Category: <a href = "data_packages/<%= data_package.id%>"><%= data_package.category%></a>  
+        | Created by: <%= data_package.user.username%>   <br>
+        Documents: <a href = "data_packages/<%= data_package.id%>/documents"> </a>  
+
+    </li>
+    <br>
+<% end %>
+
+<h4> Add a new data package here: </h4>
+<%= link_to "Add a data package", new_data_package_path %><br><br>
+
+<h4> Add a new category here: </h4>
+<%= link_to "Add a category", new_category_path %><br><br>
+
+<h4> Here are all the documents and associated packages: </h4>
+<%= link_to "All the documents", documents_path %>
 
 
-<h3> Bloomberg data packs: </h3>
+<br><br><br> 
+<h4> Scopes: </h4>
+<h5> Bloomberg data packs: </h5>
 <% @data_packages.bloomberg.each do |data_package| %>
     <li> Name: <a href = "data_packages/<%= data_package.id%>"><%= data_package.name%></a> <br>
          Category: <%= data_package.category%>
@@ -27,7 +43,7 @@
     <br>
 <% end %>
 
-<h3> Reuters data packs: </h3>
+<h5> Reuters data packs: </h5>
 <% @data_packages.reuters.each do |data_package| %>
     <li> Name: <a href = "data_packages/<%= data_package.id%>"><%= data_package.name%></a> <br>
          Category: <%= data_package.category%>
@@ -36,7 +52,7 @@
     <br>
 <% end %>
 
-<h3> CapIQ data packs: </h3>
+<h5> CapIQ data packs: </h5>
 <% @data_packages.capiq.each do |data_package| %>
     <li> Name: <a href = "data_packages/<%= data_package.id%>"><%= data_package.name%></a> <br>
          Category: <%= data_package.category%>
@@ -45,14 +61,5 @@
     <br>
 <% end %>
 <br>
-
-<h3> Add a new data package here: </h3>
-<%= link_to "Add a data package", new_data_package_path %>
-
-<br>
-
-<h2> Here are all the documents and associated packages: </h2>
-
-<%= link_to "All the documents", documents_path %>
 
 <br><br>

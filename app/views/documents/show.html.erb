@@ -6,3 +6,7 @@
 <h3> See all documents: </h3>
 <button type = "button"> 
 <%= link_to "See all documents", documents_path(@index) %> </button>
+
+<h3> See all of <%= @document.data_package.name %>'s documents </h3>
+<button type = "button"> 
+<%= link_to "See all docs for this package", data_package_documents_path(@data_package) %> </button>

@@ -10,7 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_11_152452) do
+ActiveRecord::Schema.define(version: 2019_05_03_193951) do
+
+  create_table "categories", force: :cascade do |t|
+    t.integer "data_package_id"
+    t.string "name"
+  end
 
   create_table "data_packages", force: :cascade do |t|
     t.string "name"
