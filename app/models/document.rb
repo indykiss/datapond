@@ -5,9 +5,5 @@ class Document < ApplicationRecord
     validates_presence_of :name 
     scope :descending_order, -> {order("name ASC")}
 
-    
-    def self.descending_order
-        order(name: :asc)
-    end 
 
 end

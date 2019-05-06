@@ -4,6 +4,7 @@ class DataPackagesController < ApplicationController
   def index    
     # pull out the "here all data packages" and use the search 
     # look at this, weird that I use an instance method to refer to the DataPackage class     
+    
     if params[:name]
       @data_packages = DataPackage.search_by_name(params[:name])
     else 
@@ -12,10 +13,12 @@ class DataPackagesController < ApplicationController
   end
 
   def new
+    @categories = Category.all
     @data_package = DataPackage.new
   end
 
   def create
+    @categories = Category.all
     @data_package = DataPackage.new(data_package_params)
     @data_package.user_id = current_user.id
       if @data_package.save 
@@ -27,6 +30,8 @@ class DataPackagesController < ApplicationController
 
   def show
     @data_package = DataPackage.find(params[:id])
+    @category = Category.find_by_id(@data_package.category)
+    #binding.pry
   end
   
 private

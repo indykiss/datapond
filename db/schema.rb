@@ -13,7 +13,6 @@
 ActiveRecord::Schema.define(version: 2019_05_03_193951) do
 
   create_table "categories", force: :cascade do |t|
-    t.integer "data_package_id"
     t.string "name"
   end
 

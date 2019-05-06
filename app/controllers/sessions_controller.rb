@@ -7,14 +7,15 @@ class SessionsController < ApplicationController
 
 
     def create
-        # here we check for fb sign in
+        auth = request.env['omniauth.auth']
+        # here we check for fb sign in   
         if auth
             @user = User.find_by(uid: auth["uid"])
             if @user 
                 session[:user_id] = @user.id
                 redirect_to user_path(@user)
             else 
-                @user = User.new_user_from_auth(auth)
+                @user = User.create
                 if @user.save
                     session[:user_id] = @user.id
                     redirect_to data_packages_path
@@ -40,9 +41,6 @@ class SessionsController < ApplicationController
         redirect_to root_path
     end
 
-    def auth
-        request.env['omniauth.auth']
-    end
 
 
 end

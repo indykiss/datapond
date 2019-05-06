@@ -1,2 +1,12 @@
-<h1>Category#show</h1>
-<p>Find me in app/views/category/show.html.erb</p>
+
+<h1>Category: <%= @category.name %></h1>
+
+
+<% @selected.each do |data_package| %>
+    <li> 
+    <%= link_to "See", data_package_path(data_package) %> <%= data_package.name %>
+    </li>
+<% end %>
+
+<br><br>
+<h3><%= link_to "See all categories here", categories_path %><br><br></h3>

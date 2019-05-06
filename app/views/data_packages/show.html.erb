@@ -1,21 +1,19 @@
 
 <h2> Here is the data package </h2>
  Name: <%= @data_package.name %> 
-<br> Category: <%= @data_package.category %> 
+<br> Category: <%= @category.name %> 
 <br> Made by: <%= @data_package.user.username %> 
 
-<h3> Favorite this data package? </h3>
-<button type = "button"> <%=link_to "Add favorite", new_favorite_path(@favorite)%> </button>
-
-<h3> Add a document to this data package? </h3>
-<button type = "button"> <%=link_to "Add a doc", new_data_package_document_path(@data_package)%> </button>
-
-<h3> See all data packages: </h3>
-<button type = "button"> <%= link_to "See all data packages", data_packages_path(@index) %> </button>
-
-<h3> See all documents for this data package: </h3>
-<button type = "button"> <%= link_to "See", data_package_documents_path(@data_package) %> </button>
-
+<br><br>
+<h4>
+<%=link_to "Favorite this data package? ", new_favorite_path(@favorite)%>
+ <br><br>
+<%=link_to "Add a document to this data package?", new_data_package_document_path(@data_package)%> 
+<br><br>
+<%= link_to "See all data packages", data_packages_path(@index) %> 
+<br><br>
+<%= link_to "See all documents for this data package:", data_package_documents_path(@data_package) %>
+</h4>
 
 
 <br><br>

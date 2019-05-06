@@ -11,7 +11,7 @@
 
 <% @documents.each do |document| %>
     <li> Name: <a href = "documents/<%= document.id%>"><%= document.name%></a> <br>
-    Raw data: <%= document.raw_data%> <br> Connects to data package: <a href = "data_packages/<%= document.data_package.id%>"> <%= document.data_package.name%> </a> 
+    Raw data: <%= document.raw_data%> <br>
     </li><br>
 <% end %>
 
