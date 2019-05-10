@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_03_193951) do
+ActiveRecord::Schema.define(version: 2019_05_10_185232) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2019_05_03_193951) do
 
   create_table "data_packages", force: :cascade do |t|
     t.string "name"
-    t.string "category"
+    t.integer "category_id"
     t.integer "user_id"
   end
 

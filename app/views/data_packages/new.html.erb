@@ -7,7 +7,7 @@
 
     <%= f.label :category, "Category: " %>
     <% options = options_from_collection_for_select(@categories, 'id', 'name') %>
-    <%= f.select :category,  options %>
+    <%= f.select :category_id,  options %>
 
     <%= f.submit "Create data package" %> 
 

@@ -3,7 +3,6 @@ class DataPackagesController < ApplicationController
 
   def index    
     # pull out the "here all data packages" and use the search 
-    # look at this, weird that I use an instance method to refer to the DataPackage class     
     
     if params[:name]
       @data_packages = DataPackage.search_by_name(params[:name])
@@ -31,13 +30,12 @@ class DataPackagesController < ApplicationController
   def show
     @data_package = DataPackage.find(params[:id])
     @category = Category.find_by_id(@data_package.category)
-    #binding.pry
   end
   
 private
 
   def data_package_params
-    params.require(:data_package).permit(:name, :category, :user_id)
+    params.require(:data_package).permit(:name, :category_id, :user_id)
   end
 
 end

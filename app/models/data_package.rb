@@ -1,10 +1,12 @@
 
 class DataPackage < ApplicationRecord
     belongs_to :user 
+    
+    belongs_to :category
     has_many :documents
     has_many :favorites
     validates_presence_of :name 
-    # need to add in a true has many through relationship
+#make
 
     # catgory can be a model, categories has many data packages, then many users through data packages. join table!
     # searchable through category 
