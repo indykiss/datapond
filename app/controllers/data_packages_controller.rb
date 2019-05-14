@@ -4,7 +4,6 @@ class DataPackagesController < ApplicationController
   def index        
     if params[:name]
       @data_packages = DataPackage.search_by_name(params[:name])
-      @category = Category.find_by_id
     else 
      @data_packages = DataPackage.all
     end 
@@ -31,6 +30,8 @@ class DataPackagesController < ApplicationController
     @category = Category.find_by_id(@data_package.category)
   end
   
+  
+
 private
 
   def data_package_params

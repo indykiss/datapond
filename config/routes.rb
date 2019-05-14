@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   resources :favorites
   resources :categories
 
+  get '/most_favorited', to: 'favorites#most_favorited'
   post '/sessions/create', to: 'sessions#create'
 
   get '/auth/facebook/callback', to: 'sessions#create'

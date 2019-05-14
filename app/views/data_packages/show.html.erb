@@ -5,8 +5,15 @@
 <br> Made by: <%= @data_package.user.username %> 
 
 <br><br>
+<h3> All the users that have favorited this data package: </h3>
+<% @data_package.favorites.each do |fav| %>
+    <li> User: <%= fav.user.username%></li>
+    <br>
+<% end %>
+
+<br><br>
 <h4>
-<%=link_to "Favorite this data package? ", new_favorite_path(@favorite)%>
+<%=link_to "Favorite this data package?", new_favorite_path(@favorite)%>
  <br><br>
 <%=link_to "Add a document to this data package?", new_data_package_document_path(@data_package)%> 
 <br><br>
@@ -14,6 +21,7 @@
 <br><br>
 <%= link_to "See all documents for this data package:", data_package_documents_path(@data_package) %>
 </h4>
+
 
 
 <br><br>

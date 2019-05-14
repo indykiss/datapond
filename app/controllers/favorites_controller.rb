@@ -21,6 +21,7 @@ class FavoritesController < ApplicationController
     #Favorite.joins(:data_packages, :favorites).where("(current_user.id == favorites.user_id) AND (data_packages.id == favorite.data_packages.id)" )
     #@jt = DataPackage.joins(:favorites).select(:name, :notes).where("favorites.data_package_id = data_packages.id")
     @favorites = Favorite.all
+    @data_packages = DataPackage.all 
     @my_favorites = []
     @my_notes = []
 
@@ -30,6 +31,10 @@ class FavoritesController < ApplicationController
         @my_notes << favorite.notes
       end  
     end 
+  end 
+
+  def most_favorited 
+    @data_packages = DataPackage.all
   end 
 
   def show 

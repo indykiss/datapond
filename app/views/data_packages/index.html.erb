@@ -1,10 +1,8 @@
 
 
 
-<h3> Search: </h3>
-
 <%= form_tag("/data_packages", method: "get") do %>
-    <%= label_tag(:q, "Search for name of data package:") %>
+    <%= label_tag(:q, "Filter data packages by name:") %>
     <%= text_field_tag(:name) %>
     <%= submit_tag("Search") %>
   <% end %>
