@@ -1,11 +1,10 @@
 
 class DataPackagesController < ApplicationController
 
-  def index    
-    # pull out the "here all data packages" and use the search 
-    
+  def index        
     if params[:name]
       @data_packages = DataPackage.search_by_name(params[:name])
+      @category = Category.find_by_id
     else 
      @data_packages = DataPackage.all
     end 

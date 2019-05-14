@@ -13,7 +13,7 @@
 <h3> Selected data packages: </h3>
 <% @data_packages.each do |data_package| %>
     <li> Name: <a href = "data_packages/<%= data_package.id%>"><%= data_package.name%></a> <br>
-         Category: <a href = "categories/<%= data_package.category%>"><%= data_package.category %></a>  
+         Category: <a href = "categories/<%= data_package.category.id%>"><%= data_package.category.name %></a>  
         | Created by: <%= data_package.user.username%>   <br>
         <%= link_to "See its docs", data_package_documents_path(data_package) %> </button>
     </li>
@@ -25,7 +25,8 @@
 <%= link_to "Add a new data package here", new_data_package_path %><br><br>
 <%= link_to "Add a new category here", new_category_path %><br><br>
 <%= link_to "See all categories here", categories_path %><br><br>
-<%= link_to "See all the the documents here", documents_path %></h4>
+<%= link_to "See all the documents here", documents_path %>
+</h4>
 
 
 <br><br><br> 
@@ -33,19 +34,19 @@
 <h5> Bloomberg data packs: </h5>
 <% @data_packages.bloomberg.each do |data_package| %>
     <li> Name: <a href = "data_packages/<%= data_package.id%>"><%= data_package.name%></a> <br>
-         Category: <%= data_package.category%>
-         | Created by: <%= data_package.user.username%><br>
-         <%= link_to "See its docs", data_package_documents_path(data_package) %> </button>
+    Category: <a href = "categories/<%= data_package.category.id%>"><%= data_package.category.name %></a>  
+    | Created by: <%= data_package.user.username%><br>
+    `<%= link_to "See its docs", data_package_documents_path(data_package) %> </button>
     </li>
     <br>
 <% end %>
 
 <h5> Reuters data packs: </h5>
 <% @data_packages.reuters.each do |data_package| %>
-    <li> Name: <a href = "data_packages/<%= data_package.id%>"><%= data_package.name%></a> <br>
-         Category: <%= data_package.category%>
-         | Created by: <%= data_package.user.username%><br>
-         <%= link_to "See its docs", data_package_documents_path(data_package) %> </button>
+    <li> Name: <a href = "data_packages/<%= data_package.id%>"> <%= data_package.name%></a> <br>
+    Category: <a href = "categories/<%= data_package.category.id%>"> <%= data_package.category.name %></a>  
+    | Created by: <%= data_package.user.username%><br>
+    <%= link_to "See its docs", data_package_documents_path(data_package) %> </button>
     </li>
     <br>
 <% end %>
@@ -53,9 +54,9 @@
 <h5> CapIQ data packs: </h5>
 <% @data_packages.capiq.each do |data_package| %>
     <li> Name: <a href = "data_packages/<%= data_package.id%>"><%= data_package.name%></a> <br>
-         Category: <%= data_package.category%>
-         | Created by: <%= data_package.user.username%><br>
-         <%= link_to "See its docs", data_package_documents_path(data_package) %> </button>
+    Category: <a href = "categories/<%= data_package.category.id%>"><%= data_package.category.name %></a>  
+    | Created by: <%= data_package.user.username%><br>
+    <%= link_to "See its docs", data_package_documents_path(data_package) %> </button>
     </li>
     <br>
 <% end %>

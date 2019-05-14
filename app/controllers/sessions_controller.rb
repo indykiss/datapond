@@ -5,7 +5,6 @@ class SessionsController < ApplicationController
         @user = User.new
     end
 
-
     def create
         auth = request.env['omniauth.auth']
         # here we check for fb sign in   

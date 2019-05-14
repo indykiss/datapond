@@ -16,13 +16,12 @@ Rails.application.routes.draw do
   resources :users
 
   resources :data_packages do 
-    # need to build a feature for seeing all the documents for a particular data package
-    # or if i'm not seeing a particular data package, show all data packages
     resources :documents, only: [:new, :show, :index]
   end 
 
   resources :documents
   resources :favorites
+  resources :categories
 
   post '/sessions/create', to: 'sessions#create'
 
