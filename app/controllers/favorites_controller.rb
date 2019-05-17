@@ -34,6 +34,7 @@ class FavoritesController < ApplicationController
   end 
 
   def most_favorited 
+#    binding.pry
     @data_packages = DataPackage.all
   end 
 

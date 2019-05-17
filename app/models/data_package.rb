@@ -4,20 +4,35 @@ class DataPackage < ApplicationRecord
     belongs_to :category
     has_many :documents
     has_many :favorites
+    # data_packs have many users through favorite: 
     has_many :users, through: :favorites
 
     validates_presence_of :name 
     accepts_nested_attributes_for :documents 
 
-    # maybe ok:
     scope :bloomberg, -> {where(name: "Bloomberg")}
     scope :reuters, -> {where(name: "Reuters")}
     scope :capiq, -> {where(name: "CapIQ")}
     scope :search_by_name, -> (search_name){where("name LIKE ?", search_name)}
-  
+    #scope :most_faved_data_packages, -> {where(favorites: 3)}
+
 
 
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 # Ex of source:
