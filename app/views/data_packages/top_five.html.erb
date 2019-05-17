@@ -1,0 +1,7 @@
+
+<h3> Top 5 favorited data packages </h3>
+
+<% @data_packages.top_five.each do |fav_pack| %>
+    <li> Name: <%= fav_pack.name %> </li>
+    Num of favs: <%= fav_pack.favorites.count %> <br><br>
+<% end %>

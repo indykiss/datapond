@@ -14,8 +14,9 @@ class DataPackage < ApplicationRecord
     scope :reuters, -> {where(name: "Reuters")}
     scope :capiq, -> {where(name: "CapIQ")}
     scope :search_by_name, -> (search_name){where("name LIKE ?", search_name)}
-    #scope :most_faved_data_packages, -> {where(favorites: 3)}
 
+    scope :top_five, -> {joins(:favorites).group(:id).order("Count(favorites.id) DESC").limit(5)}
+    
 
 
 end

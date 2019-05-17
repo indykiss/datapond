@@ -33,10 +33,7 @@ class FavoritesController < ApplicationController
     end 
   end 
 
-  def most_favorited 
-#    binding.pry
-    @data_packages = DataPackage.all
-  end 
+ 
 
   def show 
     @favorite = Favorite.find(params[:id])

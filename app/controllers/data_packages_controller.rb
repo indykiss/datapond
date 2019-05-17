@@ -25,11 +25,18 @@ class DataPackagesController < ApplicationController
       end 
   end
 
+  def top_five 
+    @data_packages = DataPackage.all
+  end
+
+  def most_favorited 
+    @data_packages = DataPackage.all
+  end 
+
   def show
     @data_package = DataPackage.find(params[:id])
     @category = Category.find_by_id(@data_package.category)
   end
-  
   
 
 private
