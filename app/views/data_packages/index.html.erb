@@ -8,15 +8,23 @@
   <% end %>
 <br>
 
+
 <h3> Selected data packages: </h3>
 <% @data_packages.each do |data_package| %>
     <li> Name: <a href = "data_packages/<%= data_package.id%>"><%= data_package.name%></a> <br>
          Category: <a href = "categories/<%= data_package.category.id%>"><%= data_package.category.name %></a>  
         | Created by: <%= data_package.user.username%>   <br>
-        <%= link_to "See its docs", data_package_documents_path(data_package) %> </button>
-    </li>
+
+
+          <%= link_to "See its docs", data_package_documents_path(data_package), :class => "load_docs", :remote => true %> </button>
+        
+        </li>
     <br>
 <% end %>
+
+
+
+
 
 <h4>
 <%= link_to "See all data packages here", data_packages_path %><br><br>

@@ -4,8 +4,10 @@ class DataPackagesController < ApplicationController
   def index        
     if params[:name]
       @data_packages = DataPackage.search_by_name(params[:name])
+     # render :json => @documents
     else 
      @data_packages = DataPackage.all
+     # render :json => @documents
     end 
   end
 
