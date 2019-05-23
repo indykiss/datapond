@@ -1,5 +1,5 @@
 
-
+<h4 class = "new_fav" id = "new_fav">
 <%= form_for @favorite  do |f|%>
     <%= f.hidden_field :user_id, value: current_user.id %>
     
@@ -11,3 +11,5 @@
 
     <%= f.submit 'Add favorite' %>
     <% end %>
+
+</h4>

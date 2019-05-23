@@ -8,6 +8,10 @@ class DocumentsController < ApplicationController
     else 
       @documents = Document.all
     end
+    respond_to do |format|
+      format.html     
+      format.json { render json: @documents} 
+    end
   end
 
   def new

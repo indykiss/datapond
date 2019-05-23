@@ -19,8 +19,13 @@
 <br><br>
 <%= link_to "See all data packages", data_packages_path(@index) %> 
 <br><br>
-<%= link_to "See all documents for this data package:", data_package_documents_path(@data_package) %>
 </h4>
+
+<a class="js-next" data-id="<%=@data_package.id%>"><h4>All docs</h4></a>
+<main role="main" class="dataPackName">
+
+</main>
+
 
 
 

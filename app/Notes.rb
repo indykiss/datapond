@@ -12,3 +12,13 @@ Under the Data package show page:
 # <% a new page %> 
 # <% Maybe practice making a new page anyways, like with the %> 
 # <% top 10 favorited data packages or something %> 
+
+
+
+
+$(function() {
+  $(".load_docs").on("click", function() {
+    const url = this
+    $.get( "url" + "/documents");
+  });
+});
