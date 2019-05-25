@@ -40,6 +40,10 @@ class DataPackagesController < ApplicationController
   def show
     @data_package = DataPackage.find(params[:id])
     @category = Category.find_by_id(@data_package.category)
+    respond_to do |format|
+      format.html     
+      format.json { render json: @data_package} 
+    end  
   end
   
 

@@ -3,21 +3,35 @@ $(() => {
 })
 
 const bindClickHandlers = () =>  {
+
+
   $('.all_data_packages').on('click', function(e){
     e.preventDefault()
-
-    fetch("/data_packages.json")
+    history.pushState(null, null, "data_packages")
+    fetch(`/data_packages.json`)
     .then(res => res.json())
     .then(data_packages => {
       $("#app-container").html("")
       data_packages.forEach((pack) => {
         let newDataPackage = new DataPackage(pack)
         let postHTML = newDataPackage.formatIndex()
-console.log(postHTML)
         $('#app-container').append(postHTML)
       })
     })
   })
+
+$(document).on("click", ".show_data_pack", (e) => {
+  e.preventDefault()
+  let id = $(this).attr('data-id')
+  fetch(`/data_packages/${id}.json`)
+    .then(res => res.json())
+    .then(data_packages => {
+      let newDataPackage = new DataPackage(pack)
+      let postHTML = newDataPackage.formatShow()
+      $('#app-container').append(postHTML)
+    })
+  })
+
 }
 
 function DataPackage(datapackage) {
@@ -30,9 +44,17 @@ function DataPackage(datapackage) {
 
 DataPackage.prototype.formatIndex = function() {
   let postHTML = `
-    <h4> ${this.name} </h4>
-    <h4> ${this.category} </h4>
-    `
+  <br>
+  <a href= "/data_packages/${this.id}" data-id = "${this.id}" class = "show_data_pack"><h4>${this.name}</h4></a>
+  `
+  return postHTML
+}
+
+DataPackage.prototype.formatShow = function() {
+  let postHTML = `
+  <br>
+  <h4> ${this.name} </h4>
+  `
   return postHTML
 }
 
