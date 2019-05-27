@@ -7,15 +7,19 @@ class DocumentsController < ApplicationController
       @data_package = DataPackage.find(params[:data_package_id])
     else 
       @documents = Document.all
-    end
-    respond_to do |format|
-      format.html     
-      format.json { render json: @documents} 
-    end
+    # end
+    # respond_to do |format|
+    #   format.html     
+    #   format.json { render json: @documents} 
+     end
   end
 
   def new
     @document = Document.new(data_package_id: params[:data_package_id])
+    respond_to do |format|
+      format.html     
+      format.json { render json: @document} 
+    end  
   end
 
   def create
@@ -23,7 +27,8 @@ class DocumentsController < ApplicationController
       @data_package_id = @document.data_package_id 
       @document.save
         if @document.valid?
-          redirect_to data_package_document_path(@data_package_id, @document)
+         # redirect_to data_package_document_path(@data_package_id, @document)
+          render json: @document
         else 
           render :new
         end   
