@@ -10,6 +10,10 @@ const bindClickHandlersDocs = () =>  {
   $('.new_document').on('submit', function(e){
     e.preventDefault()
 
+    // New problem:
+    // the app only loads json after creating 
+    // new document (nested under data package)
+    // need to fix that
     const values = $(this).serialize()
 
      $.post('/documents', values)
