@@ -46,8 +46,11 @@ function DataPackage(datapackage) {
 
 DataPackage.prototype.formatIndex = function() {
   let postHTML = `
-  <br>
+  <br><h4>
   <a href= "/data_packages/${this.id}" data-id = "${this.id}" class = "show_data_pack"><h4>${this.name}</h4></a>
+  <h6>
+  Category: <a href = "categories/${this.category.id}">${this.category.name}</a>  </h6>
+  <br>
   `
   return postHTML
 }
