@@ -22,11 +22,24 @@ class DataPackagesController < ApplicationController
     @categories = Category.all
     @data_package = DataPackage.new(data_package_params)
     @data_package.user_id = current_user.id
-      if @data_package.save 
-        redirect_to data_package_path(@data_package)
-      else 
-       render :new
-      end 
+    ok = @data_package.save 
+
+    respond_to do |format|
+      format.json {
+       if ok
+        render :json =>@data_package
+        else 
+          render :new
+      end
+    }
+      format.html {
+        if ok
+         redirect_to data_package_path(@data_package)
+          else 
+            render :new
+        end
+        }
+     end 
   end
 
   def top_five 

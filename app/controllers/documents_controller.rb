@@ -19,12 +19,16 @@ class DocumentsController < ApplicationController
   end
 
   def create
-      @document = Document.create(document_params)
+    binding.pry
+    # while in pry, go line by line
+    # simplify code with do block 
+    @document = Document.create(document_params)
       @data_package_id = @document.data_package_id 
       @document.save
         if @document.valid?
          # redirect_to data_package_document_path(@data_package_id, @document)
           render json: @document
+          # rendering json, not triggering JS. look into that
         else 
           render :new
         end   

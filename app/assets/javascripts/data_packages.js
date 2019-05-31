@@ -1,15 +1,19 @@
 $(() => {
-  bindClickHandlersDataPackages()
+  bindClickHandlers()
 })
 
-const bindClickHandlersDataPackages = () =>  {
+const bindClickHandlers = () =>  {
   $('.all_data_packages').on('click', function(e){
     e.preventDefault()
     history.pushState(null, null, "data_packages")
     getDataPackages()
+    showDataPackage()
+    newDataPack()
   })
+}
+  
 
-const getDataPackages = () => 
+const getDataPackages = () => {
   fetch(`/data_packages.json`)
   .then(res => res.json())
   .then(data_packages => {
@@ -20,7 +24,34 @@ const getDataPackages = () =>
       $('#app-container').append(postHTML)
     })
   })
+}
 
+  const newDataPack = () => {
+  $(document).on('click', "form", function(e) {
+      e.preventDefault()
+      // New problem:
+      // the app only loads json after creating 
+      // new document (nested under data package)
+      // need to fix that
+      const values = $(this).serialize()
+      // hits create action on line 20 
+       $.post('/data_packages/new', values)
+         .done(function(data) {
+        // json data is in data 
+        //   console.log(data)
+           $("#app-container").html('')
+          const newDataPackage2 = new DataPackage(data)
+          const postHTML = newDataPackage2.formatNew() 
+          // not really appending
+           $("#app-container").append(postHTML)
+         })
+      })
+  }
+
+
+// wrap each chunk in a function to better explain to myself what each does 
+
+const showDataPackage = () => {
 $(document).on('click', ".show_data_pack", function(e) {
   e.preventDefault()
   let id = $(this).attr('data-id')
@@ -62,3 +93,25 @@ DataPackage.prototype.formatShow = function() {
   `
   return postHTML
 }
+
+  
+  // I am a constructor function: like initialize, minus persistence, makes model object
+  function Document(document) {
+    this.id = document.id
+    this.name = document.name
+    this.raw_data = document.raw_data 
+  }
+  
+  // I am a prototype 
+  Document.prototype.formatNew = function() {
+    let postHTML = `
+    <br>
+    <h4> ${this.name}<br>
+    ${this.raw_data} 
+    </h4>
+    `
+    return postHTML
+  }
+
+
+

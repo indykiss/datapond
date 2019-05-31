@@ -1,6 +1,6 @@
 
 class DataPackageSerializer < ActiveModel::Serializer 
-    attributes :id, :name 
+    attributes :id, :name, :category, :documents, :favorites
 
     #belongs_to :user 
     belongs_to :category
