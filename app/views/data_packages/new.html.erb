@@ -1,5 +1,5 @@
 
-<h2> Create a new data package </h2>
+<h2 class="newDataPack" data-id="<%= @data_package.id %>">Make a new data package </h2>
 
 
 <%= form_for @data_package do |f|%>
@@ -13,5 +13,12 @@
     <%= f.submit "Create data package", :class => "new_data_pack" %> 
 
 <% end %>
+
+<div id="newDataPackResponse">
+    <h1 class="matchId" data-id="<%= @data_package.id %>"><%= @data_package.id %>
+    <%= @data_package.name %>
+    </h1>
+
+</div>
 
 <br><br>

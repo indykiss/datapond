@@ -22,25 +22,26 @@ class DataPackagesController < ApplicationController
     @categories = Category.all
     @data_package = DataPackage.new(data_package_params)
     @data_package.user_id = current_user.id
-    ok = @data_package.save 
-
+   
     respond_to do |format|
-      format.json {
-       if ok
-        render :json =>@data_package
-        else 
-          render :new
-      end
-    }
-      format.html {
-        if ok
-         redirect_to data_package_path(@data_package)
-          else 
-            render :new
+      if @data_package.save
+        # issue: it's always hitting html format
+        # not json format
+        # fix that 
+        format.html do
+          redirect_to '/data_packages/new'
         end
-        }
-     end 
+        format.json { render json: @data_package.to_json }
+      else
+        format.html { render 'new'} ## Specify the format in which you are rendering "new" page
+        format.json { render json: @data_package.errors } ## You might want to specify a json format as well
+      end
+    end
+
   end
+
+        # redirect_to data_package_path(@data_package)
+
 
   def top_five 
     @data_packages = DataPackage.all
