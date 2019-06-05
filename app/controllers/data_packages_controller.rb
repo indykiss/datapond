@@ -18,29 +18,28 @@ class DataPackagesController < ApplicationController
     @data_package = DataPackage.new
   end
 
+  # this almost works. when i use create instead of new, and only
+  # render json, it works!
+  # not sure when i need to work on actually 
   def create
     @categories = Category.all
     @data_package = DataPackage.new(data_package_params)
     @data_package.user_id = current_user.id
-   
-    respond_to do |format|
-      if @data_package.save
-        # issue: it's always hitting html format
-        # not json format
-        # fix that 
-        format.html do
-          redirect_to '/data_packages/new'
-        end
-        format.json { render json: @data_package.to_json }
-      else
-        format.html { render 'new'} ## Specify the format in which you are rendering "new" page
-        format.json { render json: @data_package.errors } ## You might want to specify a json format as well
-      end
-    end
 
+    if @data_package.save
+          #f.html {redirect_to data_package_path(@data_package)}
+          render json: @data_package
+    else 
+      render :new 
+      # if @data_package.save
+      #   format.html     
+      #   format.json { render json: @data_package} 
+      # else
+      #   format.html { render 'new'} 
+      #   format.json { render json: @data_package }
+      # end
+    end 
   end
-
-        # redirect_to data_package_path(@data_package)
 
 
   def top_five 
@@ -69,3 +68,28 @@ private
 
 end
 
+
+# This create wasn't working for json but is better
+# def create
+#   @categories = Category.all
+#   @data_package = DataPackage.new(data_package_params)
+#   @data_package.user_id = current_user.id
+ 
+#   respond_to do |format|
+#     if @data_package.save
+#       # issue: it's always hitting html format
+#       # not json format
+#       # fix that 
+#       format.html do
+#         redirect_to '/data_packages/new'
+#       end
+#       format.json { render json: @data_package.to_json }
+#     else
+#       format.html { render 'new'} ## Specify the format in which you are rendering "new" page
+#       format.json { render json: @data_package } ## You might want to specify a json format as well
+#     end
+#   end
+
+# end
+
+  # redirect_to data_package_path(@data_package)

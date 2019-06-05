@@ -9,7 +9,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
   </head>
 
@@ -25,7 +25,7 @@
     <%= link_to "Home", "/" %><br><br>
     <%= link_to "Favorites", favorites_path %><br>
     <%= link_to "Data packages", data_packages_path, class: "all_data_packages" %>
-    <%= link_to "... New data package", new_data_package_path, class: "new_data_package" %><br>
+    <%= link_to "... New data package", new_data_package_path, class: "all_data_packages" %><br>
     <%= link_to "Categories", categories_path %>
     <%= link_to "... New category", new_category_path %><br>
     <%= link_to "Documents", documents_path %>
