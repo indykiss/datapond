@@ -1,7 +1,7 @@
 
-<h2 class="newDataPack" data-id="<%= @data_package.id %>">Make a new data package </h2>
+<h2 data-id="<%= @data_package.id %>">Make a new data package </h2>
 
-<%= form_for(@data_package) do |f|%>
+<%= form_for @data_package, :html => {:class => "new_data_package"} do |f|%>
 
     <%= f.label :name, "Name: " %>
     <%= f.text_field :name %>
@@ -10,9 +10,7 @@
     <% options = options_from_collection_for_select(@categories, 'id', 'name') %>
     <%= f.select :category_id,  options %>
 
-    <div class = "new_data_package">
     <%= f.submit "Create data package" %> 
-    </div>
 
 <% end %>
 

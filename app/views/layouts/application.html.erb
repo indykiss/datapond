@@ -24,11 +24,14 @@
     <%= link_to "Sign out", signout_path, method: :delete %>
     <%= link_to "Home", "/" %><br><br>
     <%= link_to "Favorites", favorites_path %><br>
-    <%= link_to "Data packages", data_packages_path, class: "all_data_packages" %>
-    <%= link_to "... New data package", new_data_package_path, class: "all_data_packages" %><br>
+
+    <div class = "all_data_packages">
+    <%= link_to "Data packages", data_packages_path %>
+    <%= link_to "... New data package", new_data_package_path %><br>
     <%= link_to "Categories", categories_path %>
     <%= link_to "... New category", new_category_path %><br>
     <%= link_to "Documents", documents_path %>
+    </div>
     
     <% else %>
    <h3> <%= link_to "Sign up", signup_path %><br> </h3>

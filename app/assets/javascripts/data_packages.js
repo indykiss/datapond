@@ -7,7 +7,7 @@ const bindClickHandlers = () =>  {
     e.preventDefault()
     getDataPackages()
     showDataPackage()
-    newDataPack()
+    newDataPackage()
   })
 }
 
@@ -25,19 +25,45 @@ const getDataPackages = () => {
   })
 }
 
-const newDataPack = () => {
-   $("form").submit(function(event) {
-     // I work: but try something else $(document).on('click', ".new_data_package", function(e) {
+// the issue might be my selector
+// i'm not adding the class/id to the form correctly
+// its not hitting my JS AT ALL
+// the controller is rendering json. not hitting js
+
+// it's still not hitting JS, but the selector is fine now
+// maybe? 
+// FUCK ME
+
+const newDataPackage = () => {
+  console.log("MEEP")
+  $(".new_data_package").on('submit', function(event) {
+
+     //$("form").submit(function(event) {
      event.preventDefault();
-     var values = $(this).serialize();
-     var posting = $.post('/data_packages', values);
-     posting.done(function(data) {
-       var data_pack = data;
-       $("#postName").text(data_pack["name"]);
-       $("#postCategory").text(data_pack["category"]);
-     });
-   });
-}
+     console.log("MEEP")
+     let id = $(this).attr('data-id')
+
+     fetch(`/data_packages/${id}.json`)
+     .then(res => res.json())
+     .then(data_package => {
+       $("#app-container").html('')
+       let newDataPack = new DataPackage(data_package)
+       let postHTML = newDataPack.formatNew()
+       $('#app-container').append(postHTML)
+     })
+   })
+  }
+ 
+
+    //  var values = $(this).serialize();
+    //  var posting = $.post('/data_packages', values);
+    //  posting.done(function(data) {
+    //    var data_pack = data;
+    //    $("#postName").text(data_pack["name"]);
+    //    $("#postCategory").text(data_pack["category"]);
+    // });
+   //});
+
 
 const showDataPackage = () => {
 $(document).on('click', ".show_data_pack", function(e) {
@@ -87,7 +113,11 @@ DataPackage.prototype.formatIndex = function() {
 DataPackage.prototype.formatShow = function() {
   let postHTML = `
   <br>
-  <h4> ${this.name} </h4>
+  <h4> ${this.name} 
+  <h4>
+  <a href= "/data_packages/new" 
+  class = "new_data_pack"><h4>Add a new data package</h4></a>
+  </h4>
   `
   return postHTML
 }
@@ -96,7 +126,6 @@ Document.prototype.formatNew = function() {
     let postHTML = `
     <br>
     <h4> ${this.name}<br>
-    ${this.raw_data} class = "new_data_pack">
     </h4>
     `
     return postHTML
