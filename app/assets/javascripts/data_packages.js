@@ -5,10 +5,14 @@ $(() => {
 const bindClickHandlers = () =>  {
   $('.all_data_packages').on('click', function(e){
     e.preventDefault()
-    getDataPackages()
+    getDataPackages()    
     showDataPackage()
+  })
+
+  $('#new_data_package').on('click', function(e){
     newDataPackage()
   })
+
 }
 
 const getDataPackages = () => {
@@ -25,44 +29,44 @@ const getDataPackages = () => {
   })
 }
 
-// the issue might be my selector
-// i'm not adding the class/id to the form correctly
-// its not hitting my JS AT ALL
-// the controller is rendering json. not hitting js
-
-// it's still not hitting JS, but the selector is fine now
-// maybe? 
-// FUCK ME
+// I'm not actually making an object anymore. Fix that
+// I'm working on lines 41 - 46. Need to make the object
+// use the prototype and constructor function 
 
 const newDataPackage = () => {
-  console.log("MEEP")
-  $(".new_data_package").on('submit', function(event) {
+  $("#new_data_package").on('submit', function(e) {
+      e.preventDefault()
+      var values = $(this).serialize();
 
-     //$("form").submit(function(event) {
-     event.preventDefault();
-     console.log("MEEP")
-     let id = $(this).attr('data-id')
+      var posting = $.post('/data_packages/new', values);
+        posting.done(function(data) {
+         // $("#postName").text(data);
 
-     fetch(`/data_packages/${id}.json`)
-     .then(res => res.json())
-     .then(data_package => {
-       $("#app-container").html('')
-       let newDataPack = new DataPackage(data_package)
-       let postHTML = newDataPack.formatNew()
-       $('#app-container').append(postHTML)
-     })
+          data_pack = DataPackage.new(data)
+          data_pack.formatShow();
+
+        // $("#postName").text(data);
+        //  $("#postName").text(data_pack["name"]);
+        //  $("#postCategory").text(data_pack["category"]);
+     });
    })
-  }
- 
+  } 
 
-    //  var values = $(this).serialize();
-    //  var posting = $.post('/data_packages', values);
-    //  posting.done(function(data) {
-    //    var data_pack = data;
-    //    $("#postName").text(data_pack["name"]);
-    //    $("#postCategory").text(data_pack["category"]);
-    // });
-   //});
+  // $("#new_data_package").on('submit', function(e) {
+  //   //$("form").submit(function(event) {
+  //    console.log("I WORK");
+  //   let id = $(this).attr('data-id')
+  //   fetch(`/data_packages/${id}.json`)
+  //   .then(res => res.json())
+  //   .then(data_package => {
+  //     $("#app-container").html('')
+  //     let newDataPack = new DataPackage(data_package)
+  //     let postHTML = newDataPack.formatNew()
+  //     $('#app-container').append(postHTML)
+  //   })
+  // })
+
+
 
 
 const showDataPackage = () => {
