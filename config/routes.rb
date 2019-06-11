@@ -26,6 +26,9 @@ Rails.application.routes.draw do
     resources :documents, only: [:new, :show, :index]
   end 
 
+  post '/data_packages/new', to: 'data_packages#create'
+
+
   resources :documents
   resources :favorites
   resources :categories

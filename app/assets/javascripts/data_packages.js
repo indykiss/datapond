@@ -29,9 +29,6 @@ const getDataPackages = () => {
   })
 }
 
-// I'm not actually making an object anymore. Fix that
-// I'm working on lines 41 - 46. Need to make the object
-// use the prototype and constructor function 
 
 const newDataPackage = () => {
   $("#new_data_package").on('submit', function(e) {
@@ -40,34 +37,14 @@ const newDataPackage = () => {
 
       var posting = $.post('/data_packages/new', values);
         posting.done(function(data) {
-         // $("#postName").text(data);
 
-          data_pack = DataPackage.new(data)
+          data_pack = new DataPackage(data)
           data_pack.formatShow();
+          $("#postName").text(data_pack.name);
 
-        // $("#postName").text(data);
-        //  $("#postName").text(data_pack["name"]);
-        //  $("#postCategory").text(data_pack["category"]);
-     });
-   })
-  } 
-
-  // $("#new_data_package").on('submit', function(e) {
-  //   //$("form").submit(function(event) {
-  //    console.log("I WORK");
-  //   let id = $(this).attr('data-id')
-  //   fetch(`/data_packages/${id}.json`)
-  //   .then(res => res.json())
-  //   .then(data_package => {
-  //     $("#app-container").html('')
-  //     let newDataPack = new DataPackage(data_package)
-  //     let postHTML = newDataPack.formatNew()
-  //     $('#app-container').append(postHTML)
-  //   })
-  // })
-
-
-
+    });
+  })
+} 
 
 const showDataPackage = () => {
 $(document).on('click', ".show_data_pack", function(e) {
@@ -128,56 +105,9 @@ DataPackage.prototype.formatShow = function() {
     
 Document.prototype.formatNew = function() {
     let postHTML = `
-    <br>
+    <br> You created this data package:
     <h4> ${this.name}<br>
     </h4>
     `
     return postHTML
   }
-
-
-
-// Failed attempts to get newDataPackage() to work 
-
-//    $("form").submit(function(event) {
-//      event.preventDefault()
-     
-// 	    var values = $(this).serialize();
-  
-//        $.post('/data_packages/new', values)
-//               .done(function(data) {
-//   //           // json data is in data 
-//   //           //   console.log(data)
-//                 $("#app-container").html('')
-//                const newDataPackage2 = new DataPackage(data)
-//                const postHTML = newDataPackage2.formatNew() 
-//                // not really appending
-//                 $("#app-container").append(postHTML)
-//              }) 
-//    })
-// }
-
-  // const newDataPack = () => {
-  //   $("form").submit(function (e) {
-  //     e.preventDefault()
-  //     // New problem:
-  //     // the app only loads json after creating 
-  //     // new document (nested under data package)
-  //     // need to fix that
-  //     let data_pack_id = parseInt($(".newDataPack").attr("data-id"));
-  //     const values = $(this).serialize()
-
-  //   //  history.replaceState(null, null, "data_packages/" + "data_pack_id")
-  //     // hits create action on line 20 
-  //      $.post('/data_packages/new', values)
-  //        .done(function(data) {
-  //       // json data is in data 
-  //       //   console.log(data)
-  //          $("#app-container").html('')
-  //         const newDataPackage2 = new DataPackage(data)
-  //         const postHTML = newDataPackage2.formatNew() 
-  //         // not really appending
-  //          $("#app-container").append(postHTML)
-  //        })
-  //     })
-  // }
