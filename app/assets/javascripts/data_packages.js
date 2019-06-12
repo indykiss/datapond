@@ -12,9 +12,9 @@ const bindClickHandlers = () =>  {
   $('#new_data_package').on('click', function(e){
     newDataPackage()
   })
-
 }
 
+ 
 const getDataPackages = () => {
   history.replaceState(null, null, "data_packages")
   fetch(`/data_packages.json`)
@@ -29,7 +29,6 @@ const getDataPackages = () => {
   })
 }
 
-
 const newDataPackage = () => {
   $("#new_data_package").on('submit', function(e) {
       e.preventDefault()
@@ -43,13 +42,6 @@ const newDataPackage = () => {
   })
 } 
 
-// I'm working on how to add the "see has_many" test
-// Going to add see a data package's documents on show page
-// Down here. But not sure how
-// I have gotten nowhere. Tried making a new prototype
-// then add to this but :(
-// time to look at other sources
-
 const showDataPackage = () => {
 $(document).on('click', ".show_data_pack", function(e) {
   e.preventDefault()
@@ -62,12 +54,11 @@ $(document).on('click', ".show_data_pack", function(e) {
       $("#app-container").html('')
       let newDataPackage = new DataPackage(data_package)
       let postHTML = newDataPackage.formatShow()
-//      let postHTMLDocs = newDataPackage.formatHasMany()
       $('#app-container').append(postHTML)
-//      $('#app-container').append(postHTMLDocs)
     })
   })
 }
+
 
 // I am a constructor function: like initialize, minus persistence, makes model object
 function DataPackage(datapackage) {
@@ -84,6 +75,7 @@ function Document(document) {
   this.raw_data = document.raw_data 
 }
 
+
 // I am a prototype 
 DataPackage.prototype.formatIndex = function() {
   let postHTML = `
@@ -98,31 +90,23 @@ DataPackage.prototype.formatIndex = function() {
 }
 
 DataPackage.prototype.formatShow = function() {
+  // hardcode, not great
   let postHTML = `
   <br>
   <h4> ${this.name} <br>
   <a href= "/data_packages/new" 
   class = "new_data_pack"><h4>Add a new data package</h4></a>
   </h4><br>
-  <h5>
-  Click to see the documents for this data package:<br>
-  ${this.documents[0].name}
+  <h5><br>
+  The documents belonging to this data package:<br>
+  ${this.documents[0].name}<br>
+  ${this.documents[1].name}<br>
+  ${this.documents[2].name}<br>
   </h5>
   `
   return postHTML
 }
 
-DataPackage.prototype.formatHasMany = function(obj) {
-  var documents = this.documents;
-  var postHTMLDocs = []
-
-    var doc;
-    for (doc = 0; doc < documents.length; doc++) {
-      postHTMLDOCS < doc.name;
-  }
-
-}
-    
 Document.prototype.formatNew = function() {
     let postHTML = `
     <br> You created this data package:
@@ -131,3 +115,32 @@ Document.prototype.formatNew = function() {
     `
     return postHTML
   }
+
+
+
+
+
+
+// figuring out how to loop through this.documents
+// and console.log them. That's it
+
+// DataPackage.prototype.formatHasMany = function(obj) {
+  //   var documents = this.documents;
+  //   let postHTMLDocs = "<h4> </h4>"
+
+  //   documents.forEach(function (arrayItem) {
+  //     var x = arrayItem.prop1 + 2;
+  //     x
+  // });
+
+  //   let documents = this.documents;
+  //   documents.forEach(function(element) {
+  //     console.log(element);
+  //   });
+
+  // var postHTMLDocs = []
+  //   var doc;
+  //   for (doc = 0; doc < documents.length; doc++) {
+  //     postHTMLDocs < doc.name;
+  // }
+// }

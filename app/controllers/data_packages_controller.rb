@@ -18,26 +18,15 @@ class DataPackagesController < ApplicationController
     @data_package = DataPackage.new
   end
 
-  # this almost works. when i use create instead of new, and only
-  # render json, it works!
-  # not sure when i need to work on actually 
   def create
     @categories = Category.all
     @data_package = DataPackage.new(data_package_params)
     @data_package.user_id = current_user.id
 
     if @data_package.save
-          #f.html {redirect_to data_package_path(@data_package)}
           render json: @data_package
     else 
       render :new 
-      # if @data_package.save
-      #   format.html     
-      #   format.json { render json: @data_package} 
-      # else
-      #   format.html { render 'new'} 
-      #   format.json { render json: @data_package }
-      # end
     end 
   end
 
