@@ -37,14 +37,18 @@ const newDataPackage = () => {
 
       var posting = $.post('/data_packages/new', values);
         posting.done(function(data) {
-
           data_pack = new DataPackage(data)
-          data_pack.formatShow();
           $("#postName").text(data_pack.name);
-
     });
   })
 } 
+
+// I'm working on how to add the "see has_many" test
+// Going to add see a data package's documents on show page
+// Down here. But not sure how
+// I have gotten nowhere. Tried making a new prototype
+// then add to this but :(
+// time to look at other sources
 
 const showDataPackage = () => {
 $(document).on('click', ".show_data_pack", function(e) {
@@ -58,7 +62,9 @@ $(document).on('click', ".show_data_pack", function(e) {
       $("#app-container").html('')
       let newDataPackage = new DataPackage(data_package)
       let postHTML = newDataPackage.formatShow()
+//      let postHTMLDocs = newDataPackage.formatHasMany()
       $('#app-container').append(postHTML)
+//      $('#app-container').append(postHTMLDocs)
     })
   })
 }
@@ -94,13 +100,27 @@ DataPackage.prototype.formatIndex = function() {
 DataPackage.prototype.formatShow = function() {
   let postHTML = `
   <br>
-  <h4> ${this.name} 
-  <h4>
+  <h4> ${this.name} <br>
   <a href= "/data_packages/new" 
   class = "new_data_pack"><h4>Add a new data package</h4></a>
-  </h4>
+  </h4><br>
+  <h5>
+  Click to see the documents for this data package:<br>
+  ${this.documents[0].name}
+  </h5>
   `
   return postHTML
+}
+
+DataPackage.prototype.formatHasMany = function(obj) {
+  var documents = this.documents;
+  var postHTMLDocs = []
+
+    var doc;
+    for (doc = 0; doc < documents.length; doc++) {
+      postHTMLDOCS < doc.name;
+  }
+
 }
     
 Document.prototype.formatNew = function() {
