@@ -9,12 +9,45 @@ const bindClickHandlers = () =>  {
     showDataPackage()
   })
 
+  $('.all_data_packages_A_Z').on('click', function(e){
+    e.preventDefault()
+    getAlphabetizedDataPackages()
+  })
+
   $('#new_data_package').on('click', function(e){
     newDataPackage()
   })
 }
 
- 
+const getAlphabetizedDataPackages = () => {
+  history.replaceState(null, null, "data_packages/alphabetized")
+  fetch(`/data_packages.json`)
+  .then(res => res.json())
+  .then(data_packages => {
+    $("#app-container").html("")
+
+    data_packages.sort(function(a, b) {
+      var nameA = a.name.toUpperCase(); // ignore upper and lowercase
+      var nameB = b.name.toUpperCase(); // ignore upper and lowercase
+      if (nameA < nameB) {
+        return -1;
+      }
+      if (nameA > nameB) {
+        return 1;
+      }
+      // names must be equal
+      return 0;
+    });
+
+    // alphabetize before the loop
+    data_packages.forEach((pack) => {
+      let newDataPackage = new DataPackage(pack)
+      let postHTML = newDataPackage.formatIndex()
+      $('#app-container').append(postHTML)
+    })
+  })
+}
+
 const getDataPackages = () => {
   history.replaceState(null, null, "data_packages")
   fetch(`/data_packages.json`)
