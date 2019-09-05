@@ -7,6 +7,7 @@ class DataPackagesController < ApplicationController
     else 
      @data_packages = DataPackage.all
     end 
+
     respond_to do |format|
       format.html     
       format.json { render json: @data_packages} 

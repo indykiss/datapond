@@ -4,8 +4,6 @@
 <br> Category: <%= @category.name %> 
 <br> Made by: <%= @data_package.user.username %> 
 
-<br><br>
-<h3> All the users that have favorited this data package: </h3>
 <% @data_package.favorites.each do |fav| %>
     <li> User: <%= fav.user.username%></li>
     <br>
@@ -18,7 +16,6 @@
 <%= link_to "See all data packages", data_packages_path(@index) %><br><br>
 </h4>
 
-<a class="js-next" data-id="<%=@data_package.id%>"><h4>All docs</h4></a>
 <main role="main" class="dataPackName">
 
 </main>
