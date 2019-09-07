@@ -29,27 +29,46 @@
     <div> <%= flash[:message] %></div>
   <% end %><br>
 
+  <div class="navbar navbar-expand-lg navbar-light bg-light">
+  
+  <div class="nav-item">
   <% if current_user %>
     <p>Signed in as <%= "#{current_user.email}" %></p>
     <%= link_to "Sign out", signout_path, method: :delete %>
-    <%= link_to "Home", "/" %><br><br>
-    <%= link_to "Favorites", favorites_path %><br>
+    <%= link_to "Home", "/" %>
+    <%= link_to "Favorites", favorites_path %>
+  </div>
 
+  <div class="nav-item">
     <%= link_to "Data packages", data_packages_path, class: 'all_data_packages' %>
+  </div>
+
+  <div class="nav-item">
     <%= link_to "Data packages, Alphabetized", data_packages_path, class: 'all_data_packages_A_Z' %>
+  </div>
 
-    <%= link_to "... New data package", new_data_package_path, class: 'new_data_package' %><br>
+  <div class="nav-item">
+    <%= link_to "New data package", new_data_package_path, class: 'new_data_package' %>
+  </div>
+
+  <div class="nav-item">
     <%= link_to "Categories", categories_path %>
-    <%= link_to "... New category", new_category_path %><br>
+  </div>
+
+  <div class="nav-item">
+    <%= link_to "New category", new_category_path %>
+  </div>
+
+  <div class="nav-item">
     <%= link_to "Documents", documents_path %>
-    
+  </div>  
+  
     <% else %>
-   <h3> <%= link_to "Sign up", signup_path %><br> </h3>
-   <h3> <%= link_to "Sign in", signin_path %><br> </h3>
+   <h3> <%= link_to "Sign up", signup_path %></h3>
+   <h3> <%= link_to "Sign in", signin_path %></h3>
    <h3> <%= link_to "Sign in with Facebook", '/auth/facebook' %> </h3>
-
-
  <% end %>
+ </div>
 
   <div id = "app-container">
       <%= yield %>
