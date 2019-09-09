@@ -17,6 +17,8 @@ class DataPackagesController < ApplicationController
   # Creating a new data package doesn't work anymore
   # WHY. 
   # Try deleting all data and starting from scratch
+  # Also pull off the Frankenstein jquery thing on index page 
+
   def new
     @categories = Category.all
     @data_package = DataPackage.new
