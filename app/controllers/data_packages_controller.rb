@@ -17,6 +17,8 @@ class DataPackagesController < ApplicationController
   # Creating a new data package doesn't work anymore
   # WHY. 
   # Try deleting all data and starting from scratch
+  # Deleting all data and starting from scratch didnt work well
+  # Now i just have multiples of data. Like 3 things are created for every submit
   # Also pull off the Frankenstein jquery thing on index page 
 
   def new
