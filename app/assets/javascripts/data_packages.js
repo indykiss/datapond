@@ -110,6 +110,7 @@ function Document(document) {
 
 
 // I am a prototype 
+// Here is where I need to adjust to get rid of JQUERY?
 DataPackage.prototype.formatIndex = function() {
   let postHTML = `
   <br><h4>
