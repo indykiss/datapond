@@ -111,6 +111,7 @@ function Document(document) {
 
 // I am a prototype 
 // Here is where I need to adjust to get rid of JQUERY?
+// Need to think about the interaction between JQuery and the Ruby
 DataPackage.prototype.formatIndex = function() {
   let postHTML = `
   <br><h4>
