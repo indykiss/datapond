@@ -48,6 +48,7 @@ const getAlphabetizedDataPackages = () => {
   })
 }
 
+// Fetches all the data packages
 const getDataPackages = () => {
   history.replaceState(null, null, "data_packages")
   fetch(`/data_packages.json`)
@@ -62,6 +63,7 @@ const getDataPackages = () => {
   })
 }
 
+// 
 const newDataPackage = () => {
   $("#new_data_package").on('submit', function(e) {
       e.preventDefault()
@@ -75,6 +77,7 @@ const newDataPackage = () => {
   })
 } 
 
+// Fetches the specific data package when requested
 const showDataPackage = () => {
 $(document).on('click', ".show_data_pack", function(e) {
   e.preventDefault()
