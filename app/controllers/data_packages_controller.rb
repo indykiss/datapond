@@ -24,6 +24,7 @@ class DataPackagesController < ApplicationController
   def new
     @categories = Category.all
     @data_package = DataPackage.new
+    puts (@data_package)
   end
 
   def create
@@ -36,6 +37,7 @@ class DataPackagesController < ApplicationController
     else 
       render :new 
     end 
+    puts (@data_package)
   end
 
 
