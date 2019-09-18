@@ -113,6 +113,7 @@ function Document(document) {
 
 
 // I am a prototype 
+// DATABASE IS LOCKED, FIX ME
 // Here is where I need to adjust to get rid of JQUERY?
 // Need to think about the interaction between JQuery and the Ruby
 
