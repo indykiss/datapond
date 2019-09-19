@@ -18,11 +18,7 @@ Rails.application.routes.draw do
   get '/data_packages/top_five', to: 'data_packages#top_five'
   get '/data_packages/most_favorited', to: 'data_packages#most_favorited'
 
-  resources :data_packages do 
-    # If I wanted to do a nested route for the top_five under data packages
-    # I can tell the route to say "add top_five" to datapackages
-    # it's ok to have a long list of 
-    # get '/top_five', on: :collection     
+  resources :data_packages do     
     resources :documents, only: [:new, :show, :index]
   end 
 

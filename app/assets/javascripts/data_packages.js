@@ -73,6 +73,7 @@ const newDataPackage = () => {
         posting.done(function(data) {
           data_pack = new DataPackage(data)
           $("#postName").text(data_pack.name);
+          $("#postCategory").text(data_pack.category);          
     });
   })
 } 

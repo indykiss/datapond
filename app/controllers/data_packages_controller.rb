@@ -24,20 +24,21 @@ class DataPackagesController < ApplicationController
   def new
     @categories = Category.all
     @data_package = DataPackage.new
-    puts (@data_package)
+    return @data_package
   end
 
   def create
     @categories = Category.all
-    @data_package = DataPackage.new(data_package_params)
+    @data_package = DataPackage.create(data_package_params)
     @data_package.user_id = current_user.id
+    @data_package.save!
 
-    if @data_package.save
-          render json: @data_package
-    else 
-      render :new 
-    end 
-    puts (@data_package)
+    # if @data_package.save
+    #       render json: @data_package
+    # else 
+    #   render :new 
+    # end 
+    return @data_package
   end
 
 
