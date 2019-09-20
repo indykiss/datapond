@@ -21,24 +21,25 @@ class DataPackagesController < ApplicationController
   # Now i just have multiples of data. Like 3 things are created for every submit
   # Also pull off the Frankenstein jquery thing on index page 
 
+  # I also need to pull off SQLite all together and use something else
   def new
     @categories = Category.all
     @data_package = DataPackage.new
-    return @data_package
+    # return @data_package
   end
 
   def create
     @categories = Category.all
-    @data_package = DataPackage.create(data_package_params)
+    @data_package = DataPackage.new(data_package_params)
     @data_package.user_id = current_user.id
-    @data_package.save!
+    # @data_package.save!
 
-    # if @data_package.save
-    #       render json: @data_package
-    # else 
-    #   render :new 
-    # end 
-    return @data_package
+    if @data_package.save
+          render json: @data_package
+    else 
+      render :new 
+    end 
+    # return @data_package
   end
 
 
