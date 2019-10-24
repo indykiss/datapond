@@ -21,7 +21,6 @@ class DataPackagesController < ApplicationController
   # Now i just have multiples of data. Like 3 things are created for every submit
   # Also pull off the Frankenstein jquery thing on index page 
 
-  # I also need to pull off SQLite all together and use something else
   def new
     @categories = Category.all
     @data_package = DataPackage.new
