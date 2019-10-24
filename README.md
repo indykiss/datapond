@@ -4,6 +4,7 @@ Datapond is a platform for sharing news and market data to facilitate analytics.
 
 Any particularly good data package can be favorited by the user, to be accessed later on.
 
+Datapond is up on heroku and can be found here: 
 
 
 # Tech/framework used
