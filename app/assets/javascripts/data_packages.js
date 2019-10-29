@@ -1,3 +1,7 @@
+// Commenting out the below to fix:
+// 1. The Jquery frankenstein thing 
+// 2. The second object being created randomly
+
 // $(() => {
 //   bindClickHandlers()
 // })
