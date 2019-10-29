@@ -1,23 +1,23 @@
-$(() => {
-  bindClickHandlers()
-})
+// $(() => {
+//   bindClickHandlers()
+// })
 
-const bindClickHandlers = () =>  {
-  $('.all_data_packages').on('click', function(e){
-    e.preventDefault()
-    getDataPackages()    
-    showDataPackage()
-  })
+// const bindClickHandlers = () =>  {
+//   $('.all_data_packages').on('click', function(e){
+//     e.preventDefault()
+//     getDataPackages()    
+//     showDataPackage()
+//   })
 
-  $('.all_data_packages_A_Z').on('click', function(e){
-    e.preventDefault()
-    getAlphabetizedDataPackages()
-  })
+//   $('.all_data_packages_A_Z').on('click', function(e){
+//     e.preventDefault()
+//     getAlphabetizedDataPackages()
+//   })
 
-  $('#new_data_package').on('click', function(e){
-    newDataPackage()
-  })
-}
+//   $('#new_data_package').on('click', function(e){
+//     newDataPackage()
+//   })
+// }
 
 const getAlphabetizedDataPackages = () => {
   history.replaceState(null, null, "data_packages/alphabetized")
