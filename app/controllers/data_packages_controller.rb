@@ -23,7 +23,7 @@ class DataPackagesController < ApplicationController
 
   def new
     @categories = Category.all
-    @data_package = DataPackage.new
+    # @data_package = DataPackage.new
     # return @data_package
   end
 
