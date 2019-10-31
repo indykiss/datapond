@@ -18,6 +18,7 @@ class DocumentsController < ApplicationController
     # end  
   end
 
+  #Issue is here? Line 27 is problematic
   def create
     @document = Document.create(document_params)
       @data_package_id = @document.data_package_id 
