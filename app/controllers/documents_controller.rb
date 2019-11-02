@@ -12,22 +12,21 @@ class DocumentsController < ApplicationController
 
   def new
     @document = Document.new(data_package_id: params[:data_package_id])
-    # respond_to do |format|
-    #   format.html     
-    #   format.json { render json: @document} 
-    # end  
+     respond_to do |format|
+       format.html     
+       format.json { render json: @document} 
+     end  
   end
 
-  #Issue is here? Line 27 is problematic
   def create
     @document = Document.create(document_params)
       @data_package_id = @document.data_package_id 
-      @document.save
-        if @document.valid?
+      @document.create
+         if @document.valid?
           redirect_to data_package_document_path(@data_package_id, @document)
-        else 
-          render :new
-        end   
+         else 
+           render :new
+       end   
   end
 
   def show

@@ -24,12 +24,18 @@ class DataPackagesController < ApplicationController
     @categories = Category.all
     @data_package = DataPackage.new(data_package_params)
     @data_package.user_id = current_user.id
-
-    if @data_package.save
-          render json: @data_package
-    else 
-      render :new 
-    end 
+    @data_package.create 
+    # Still rendering json instead of html
+    respond_to do |format|
+      format.html     
+      format.json { render json: @data_package} 
+    end  
+  
+    # if @data_package.save
+    #       render json: @data_package
+    # else 
+    #   render :new 
+    # end 
   end
 
 
