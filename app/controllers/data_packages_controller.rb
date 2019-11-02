@@ -8,10 +8,10 @@ class DataPackagesController < ApplicationController
      @data_packages = DataPackage.all
     end 
 
-    respond_to do |format|
-      format.html     
-      format.json { render json: @data_packages} 
-    end
+    # respond_to do |format|
+    #   format.html     
+    #   format.json { render json: @data_packages} 
+    # end
   end
 
 
@@ -26,16 +26,16 @@ class DataPackagesController < ApplicationController
     @data_package.user_id = current_user.id
     @data_package.create 
     # Still rendering json instead of html
-    respond_to do |format|
-      format.html     
-      format.json { render json: @data_package} 
-    end  
+    # respond_to do |format|
+    #   format.html     
+    #   format.json { render json: @data_package} 
+    # end  
   
-    # if @data_package.save
-    #       render json: @data_package
-    # else 
-    #   render :new 
-    # end 
+    if @data_package.save
+      redirect_to data_package_path(@data_package)
+    else 
+      render :new 
+    end 
   end
 
 
@@ -50,10 +50,10 @@ class DataPackagesController < ApplicationController
   def show
     @data_package = DataPackage.find(params[:id])
     @category = Category.find_by_id(@data_package.category)
-    respond_to do |format|
-      format.html     
-      format.json { render json: @data_package} 
-    end  
+    # respond_to do |format|
+    #   format.html     
+    #   format.json { render json: @data_package} 
+    # end  
   end
   
 
