@@ -1,3 +1,8 @@
+# Create for documents and data packages are both broken 
+# As in the show page after creating each doc is broken
+# Need to add a "add a document" to data packages index page
+
+
 
 class DataPackagesController < ApplicationController
 
