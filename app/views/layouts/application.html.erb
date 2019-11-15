@@ -3,9 +3,16 @@
 
   <head>
 
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/jquery-3.4.1.js"  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="  crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 
@@ -20,62 +27,55 @@
 
   <body>
 
-  <div class="mx-auto" style="width: 900px;">
+    <div class="mx-auto" style="width: 900px;">
 
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-  <% if flash[:message] %>
-    <div> <%= flash[:message] %></div>
-  <% end %><br>
+    <% if flash[:message] %>
+      <div> <%= flash[:message] %></div>
+    <% end %><br>
 
-  <div class="navbar navbar-expand-lg navbar-dark bg-light">
-  
-  <div class="nav-item">
-  <% if current_user %>
-    <p>Signed in as <%= "#{current_user.email}" %></p>
-    <%= link_to "Sign out", signout_path, method: :delete %>
-    <%= link_to "Home", "/" %>
-    <%= link_to "Favorites", favorites_path %>
+
+    <div class="navbar navbar-expand-lg navbar-dark bg-light">
+      
+      <div class="nav-item">
+      <% if current_user %>
+        <p>Signed in as <%= "#{current_user.email}" %></p>
+        <%= link_to "Sign out", signout_path, method: :delete %>
+        <%= link_to "Home", "/" %>
+        <%= link_to "Favorites", favorites_path %>
+      </div>
+
+      <div class="nav-item">
+        <%= link_to "Data packages", data_packages_path, class: 'all_data_packages' %>
+      </div>
+
+      <div class="nav-item">
+        <%= link_to "New data package", new_data_package_path, class: 'new_data_package' %>
+      </div>
+
+      <div class="nav-item">
+        <%= link_to "Categories", categories_path %>
+      </div>
+
+      <div class="nav-item">
+        <%= link_to "New category", new_category_path %>
+      </div>
+
+      <div class="nav-item">
+        <%= link_to "Documents", documents_path %>
+      </div>  
+      
+        <% else %>
+      <h3> <%= link_to "Sign up", signup_path %></h3>
+      <h3> <%= link_to "Sign in", signin_path %></h3>
+    <% end %>
+    </div>
+
+    <div id = "app-container">
+        <%= yield %>
+    </div>
+
   </div>
-
-  <div class="nav-item">
-    <%= link_to "Data packages", data_packages_path, class: 'all_data_packages' %>
-  </div>
-
-  <%# This was a Jquery add on, but pulled off jquery   %>
-  <%# <div class="nav-item">   %>
-  <%#   <%= link_to "Data packages, Alphabetized", data_packages_path, class: 'all_data_packages_A_Z' %>  
-  <%# </div>   %>
- 
-
-  <div class="nav-item">
-    <%= link_to "New data package", new_data_package_path, class: 'new_data_package' %>
-  </div>
-
-  <div class="nav-item">
-    <%= link_to "Categories", categories_path %>
-  </div>
-
-  <div class="nav-item">
-    <%= link_to "New category", new_category_path %>
-  </div>
-
-  <div class="nav-item">
-    <%= link_to "Documents", documents_path %>
-  </div>  
-  
-    <% else %>
-   <h3> <%= link_to "Sign up", signup_path %></h3>
-   <h3> <%= link_to "Sign in", signin_path %></h3>
- <% end %>
- </div>
-
-  <div id = "app-container">
-      <%= yield %>
-  </div>
-
-
   </body>
 
 </div>
