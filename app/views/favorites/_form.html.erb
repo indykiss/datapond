@@ -5,8 +5,8 @@
     
     <%= f.label :notes, "Notes: " %>
     <%= f.text_field :notes %>
-    
-    <%= f.label :data_package_id, "Data Package it belongs to?:" %>
+    <br>
+    <%= f.label :data_package_id, "Data Package:" %>
     <%= f.collection_select :data_package_id, DataPackage.all, :id, :name %>
 
     <%= f.submit 'Add favorite' %>
