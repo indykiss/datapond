@@ -42,6 +42,9 @@ gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 
+# We're adding chartkick for data visualization of favorites
+gem "chartkick"
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
@@ -73,6 +76,7 @@ group :test do
   # Commenting out bc issue with Selenium, which is making heroku deploy hard
   # gem 'chromedriver-helper'
 end
+
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

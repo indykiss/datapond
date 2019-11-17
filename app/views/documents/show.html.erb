@@ -1,12 +1,10 @@
-
-<h2> <%= @document.data_package.name %> </h2>
+<br>
+<h2> <%= @document.data_package.name %>'s document </h2><br>
 <h4> Name: <%= @document.name %> </h4>
 <h4> URL: <%= @document.raw_data %> </h4>
-
-<h3> See all documents: </h3>
+<br>
 <button type = "button"> 
 <%= link_to "See all documents", documents_path(@index) %> </button>
-
-<h3> See all of <%= @document.data_package.name %>'s documents </h3>
+<br>
 <button type = "button"> 
 <%= link_to "See all docs for this package", data_package_documents_path(@data_package) %> </button>

@@ -1,7 +1,6 @@
-
-<h2> You favorited this data package </h2>
+<br>
+<h2> You favorited this data package: </h2><br>
 <h4> Name: <%= @favorited_data_package.name %> </h4>
-<h4> Notes: <%= @favorite.notes %> </h4>
+<h4> Notes: <%= @favorite.notes %> </h4><br>
 
-<h3> See all your favorited data packages: </h3>
-<button type = "button"> <%= link_to "See all favs", favorites_path(@index) %> </button>
+<button type = "button"> <%= link_to "See all your favs", favorites_path(@index) %> </button>

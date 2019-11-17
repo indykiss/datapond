@@ -1,15 +1,5 @@
-
-
-
-<%= form_tag("/data_packages", method: "get") do %>
-    <%= label_tag(:q, "Filter data packages by name:") %>
-    <%= text_field_tag(:name) %>
-    <%= submit_tag("Search") %>
-  <% end %>
 <br>
-
-
-<h3> Selected data packages: </h3>
+<h2> All data packages </h2><br>
 <% @data_packages.each do |data_package| %>
     <li> Name: <a href = "data_packages/<%= data_package.id%>"><%= data_package.name%></a> <br>
          Category: <a href = "categories/<%= data_package.category.id%>"><%= data_package.category.name %></a>  
@@ -21,6 +11,15 @@
 
 <% if false %>
 <h4> This is scope which I dont need to have for production: </h4>
+
+
+<%= form_tag("/data_packages", method: "get") do %>
+    <%= label_tag(:q, "Filter data packages by name:") %>
+    <%= text_field_tag(:name) %>
+    <%= submit_tag("Search") %>
+  <% end %>
+<br>
+
 
 <br><br><br> 
 <h4> Scopes: </h4>
