@@ -5,7 +5,8 @@
 <br> Made by: <%= @data_package.user.username %> 
 
 <% @data_package.favorites.each do |fav| %>
-    <li> User: <%= fav.user.username%></li>
+    <h4>Favorited by:</h4>
+    <li> <%= fav.user.username%></li>
     <br>
 <% end %>
 </h4>
