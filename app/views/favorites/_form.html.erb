@@ -8,8 +8,8 @@
     <br>
     <%= f.label :data_package_id, "Data Package:" %>
     <%= f.collection_select :data_package_id, DataPackage.all, :id, :name %>
-
-    <%= f.submit 'Add favorite' %>
+    <br>
+    <%= f.submit 'Create favorite' %>
     <% end %>
 
 </h4>

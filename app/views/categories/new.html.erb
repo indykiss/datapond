@@ -1,13 +1,12 @@
 
 <br>
 <h2> Create a new category </h2><br>
-
+<h4>
 <%= form_for @category do |f|%>
     <%= f.label :name, "Name: " %>
     <%= f.text_field :name %>
-
+    <br>
     <%= f.submit "Create category" %> 
-
 <% end %>
+</h4>
 
-<br><br>

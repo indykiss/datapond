@@ -2,18 +2,20 @@
 <h2> Add a new document for: <br><%= @document.data_package.name %> </h2>
 <br>
 <div class = "new_document" id = "new_document">
+<h4>
 <%= form_for @document do |f|%>
     <%= f.label :name, "Name: " %>
     <%= f.text_field :name %>
-
+    <br>
     <%= f.label :raw_data, "URL: " %>
     <%= f.text_field :raw_data %>
 
     <%= f.hidden_field :data_package_id%>
-
+    <br>
     <%= f.submit "Create document" %> 
 
 <% end %>
+</h4>
 
 </div>
 
