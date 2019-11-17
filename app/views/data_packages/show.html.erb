@@ -12,9 +12,10 @@
 
 <br><br>
 <h4>
-<%= link_to "Favorite this data package?", new_favorite_path(@favorite)%><br><br>
-<%= link_to "Add a document to this data package?", new_data_package_document_path(@data_package)%><br><br>
-<%= link_to "See all data packages", data_packages_path(@index) %><br><br>
+<%= link_to "Favorite this data package", new_favorite_path(@favorite)%><br><br>
+<%= link_to "Add a document", new_data_package_document_path(@data_package)%><br><br>
+<%= link_to "See this package's docs", data_package_documents_path(@data_package)%><br><br>
+
 </h4>
 
 <main role="main" class="dataPackName">

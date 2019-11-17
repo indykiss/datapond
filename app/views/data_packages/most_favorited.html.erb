@@ -3,8 +3,9 @@
 
 <%= column_chart Favorite.group(:data_package_id).count, xtitle: "Data package ID", ytitle: "Count" %>
 
-<br>
+<br><ol>
 <% @data_packages.each do |fav_pack| %>
-    <li> Name: <%= fav_pack.name %> </li>
-    Num of favs: <%= fav_pack.favorites.count %> <br><br>
+    <li><%= fav_pack.name %> </li>
+    <ul>Num of favs: <%= fav_pack.favorites.count %> <br><br></ul>
 <% end %>
+</ol>

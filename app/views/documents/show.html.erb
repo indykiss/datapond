@@ -1,7 +1,9 @@
 <br>
 <h2> <%= @document.data_package.name %>'s document </h2><br>
-<h4> Name: <%= @document.name %> </h4>
-<h4> URL: <%= @document.raw_data %> </h4>
+<h4> Name: <%= @document.name %> <br>
+    URL: <a href = "<%= @document.raw_data%>"><%= @document.raw_data%></a> <br>
+</h4>
+
 <br>
 <button type = "button"> 
 <%= link_to "See all documents", documents_path(@index) %> </button>

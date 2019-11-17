@@ -8,12 +8,10 @@
 </h3>
 <br>
 
-<h2> <%= link_to "Add a new document", new_document_path %></h2>
-<br>
 
 <% @documents.each do |document| %>
-    <li> Name: <a href = "documents/<%= document.id%>"><%= document.name%></a> <br>
-    URL: <%= document.raw_data%> <br>
+    <li> Name: <%= document.name%> <br>
+    URL: <a href = "<%= document.raw_data%>"><%= document.raw_data%></a> <br>
     </li><br>
 <% end %>
 
