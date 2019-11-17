@@ -4,7 +4,7 @@
 <h3> See all your favorites </h3>
 
 <% @my_favorites.zip(@my_notes).each do |my_fav, my_note| %>
-    <li> Name: <a href = "data_packages/<%= my_fav.id%>"> <%= my_fav.name%></a><br>
+    <ol> Name: <a href = "data_packages/<%= my_fav.id%>"> <%= my_fav.name%></a><br>
       Notes: <%= my_note%> <br> </li>
     <br>
 <% end %>
