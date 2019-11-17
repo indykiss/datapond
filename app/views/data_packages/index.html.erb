@@ -10,8 +10,8 @@
     <li> Name: <a href = "data_packages/<%= data_package.id%>"><%= data_package.name%></a> </li>
         <ul> Category: <a href = "categories/<%= data_package.category.id%>"><%= data_package.category.name %></a>  
             | Created by: <%= data_package.user.username%>   <br>
-            <%= link_to "See its docs", data_package_documents_path(data_package)%> </button><br>
-            <%= link_to "Add a doc", new_data_package_document_path(data_package)%>
+            <%= link_to "See all documents", data_package_documents_path(data_package)%> </button><br>
+            <%= link_to "Add a document", new_data_package_document_path(data_package)%>
         </ul>
     <br>
 <% end %>
@@ -55,7 +55,7 @@
     <li> Name: <a href = "data_packages/<%= data_package.id%>"><%= data_package.name%></a> <br>
     Category: <a href = "categories/<%= data_package.category.id%>"><%= data_package.category.name %></a>  
     | Created by: <%= data_package.user.username%><br>
-    <%= link_to "See its docs", data_package_documents_path(data_package) %> </button>
+    <%= link_to "See its documents", data_package_documents_path(data_package) %> </button>
     </li>
     <br>
 <% end %>
