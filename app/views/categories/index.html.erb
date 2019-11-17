@@ -1,5 +1,9 @@
 <br>
-<h2> All categories </h2><br>
+<h2><i> Categories </i></h2><br>
+
+<h2> <%= link_to "Add a new category", new_category_path %></h2><br>
+
+<h3>Index:</h3><br>
 
 <% @categories.each do |category| %>
     <li> Name:  <a href = "categories/<%= category.id%>"><%= category.name %></a> <br><br>
@@ -7,5 +11,3 @@
 <% end %>
 
 
-
-<h4> <%= link_to "Add a new category here", new_category_path %></h4>

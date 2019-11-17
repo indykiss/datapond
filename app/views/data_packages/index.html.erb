@@ -1,5 +1,11 @@
 <br>
-<h2> All data packages </h2><br>
+<h2><i> Data packages </i></h2><br>
+
+<h2> <%= link_to "Add a new data package", new_data_package_path %></h2>
+<br>
+
+<h3> Index: </h3><br>
+
 <% @data_packages.each do |data_package| %>
     <li> Name: <a href = "data_packages/<%= data_package.id%>"><%= data_package.name%></a> <br>
          Category: <a href = "categories/<%= data_package.category.id%>"><%= data_package.category.name %></a>  

@@ -1,12 +1,14 @@
 <br>
-<h3> Here are the documents for: 
-<br>
-<% if @data_package %>
+<h2><i> Documents for: </i></h2>
+<h3><% if @data_package %>
     <%= @data_package.name%>
     <% else %>
     <%= "All data packages" %>
 <% end %>
 </h3>
+<br>
+
+<h2> <%= link_to "Add a new document", new_document_path %></h2>
 <br>
 
 <% @documents.each do |document| %>

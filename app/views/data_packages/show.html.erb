@@ -4,10 +4,9 @@
 <br> Category: <%= @category.name %> 
 <br> Made by: <%= @data_package.user.username %> 
 
+<h4>Favorited by:</h4>
 <% @data_package.favorites.each do |fav| %>
-    <h4>Favorited by:</h4>
     <li> <%= fav.user.username%></li>
-    <br>
 <% end %>
 </h4>
 

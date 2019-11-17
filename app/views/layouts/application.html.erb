@@ -27,7 +27,7 @@
 
   <body>
 
-    <div class="mx-auto" style="width: 1200px;">
+    <div class="mx-auto" style="width: 1000px;">
 
 
     <% if flash[:message] %>
@@ -35,14 +35,17 @@
     <% end %><br>
 
 
-    <div class="navbar navbar-expand-lg navbar-dark bg-light">
+    <div class="navbar navbar-default bg-light">
       
       <div class="nav-item">
       <% if current_user %>
         <p>Signed in as <%= "#{current_user.email}" %></p>
-        <%= link_to "Sign out", signout_path, method: :delete %>
+        <button class="btn btn-sm btn-outline-secondary" type="button">
+        <%= link_to "Sign out", signout_path, method: :delete %></button>
+      </div>
+
+      <div class="nav-item">
         <%= link_to "Home", "/" %>
-        <%= link_to "Favorites", favorites_path %>
       </div>
 
       <div class="nav-item">
@@ -50,24 +53,20 @@
       </div>
 
       <div class="nav-item">
-        <%= link_to "New data package", new_data_package_path, class: 'new_data_package' %>
-      </div>
-
-      <div class="nav-item">
         <%= link_to "Categories", categories_path %>
-      </div>
-
-      <div class="nav-item">
-        <%= link_to "New category", new_category_path %>
       </div>
 
       <div class="nav-item">
         <%= link_to "Documents", documents_path %>
       </div>  
+
+      <div class="nav-item">
+        <%= link_to "Your Favorites", favorites_path %>
+      </div>  
       
         <% else %>
-      <h3> <%= link_to "Sign up", signup_path %></h3>
-      <h3> <%= link_to "Sign in", signin_path %></h3>
+      <h2> <%= link_to "Sign up", signup_path %></h2>
+      <h2> <%= link_to "Sign in", signin_path %></h2>
     <% end %>
     </div>
 
