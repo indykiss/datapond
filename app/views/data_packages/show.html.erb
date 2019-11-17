@@ -1,6 +1,6 @@
 
-<h2> Here is the data package </h2>
- Name: <%= @data_package.name %> 
+<h2> You've created: </h2>
+<h4> Name: <%= @data_package.name %> 
 <br> Category: <%= @category.name %> 
 <br> Made by: <%= @data_package.user.username %> 
 
@@ -8,6 +8,7 @@
     <li> User: <%= fav.user.username%></li>
     <br>
 <% end %>
+</h4>
 
 <br><br>
 <h4>
