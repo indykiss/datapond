@@ -3,7 +3,7 @@
 
 <h2> <%= link_to "Add a new category", new_category_path %></h2><br>
 
-<h3>Index:</h3><br>
+<h3>Types of research:</h3><br>
 
 <% @categories.each do |category| %>
     <li> Name:  <a href = "categories/<%= category.id%>"><%= category.name %></a> <br><br>

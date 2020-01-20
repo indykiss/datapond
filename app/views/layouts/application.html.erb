@@ -39,7 +39,6 @@
       
       <div class="nav-item">
       <% if current_user %>
-        <p>Signed in as <%= "#{current_user.email}" %></p>
         <button class="btn btn-sm btn-outline-secondary" type="button">
         <%= link_to "Sign out", signout_path, method: :delete %></button>
       </div>

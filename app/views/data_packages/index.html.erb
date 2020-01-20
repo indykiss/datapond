@@ -4,7 +4,7 @@
 <h2> <%= link_to "Add a new data package", new_data_package_path %></h2>
 <br>
 
-<h3> Index: </h3><br>
+<h3> Research wall: </h3><br>
 
 <% @data_packages.each do |data_package| %>
     <li> Name: <a href = "data_packages/<%= data_package.id%>"><%= data_package.name%></a> </li>

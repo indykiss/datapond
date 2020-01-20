@@ -9,7 +9,6 @@ class UsersController < ApplicationController
       @user = User.new(user_params)
       if @user.save
           session[:user_id] = @user.id
-          flash[:message] = "Welcome!"
           redirect_to data_packages_path 
       else
         flash[:message] = "Sorry, please try again."
